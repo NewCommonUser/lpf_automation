@@ -3,20 +3,23 @@
  */
 
 import React, {Component} from 'react';
-import { Button,message } from 'antd';
+import {
+    // HashRouter,
+    BrowserRouter, Route, Switch} from 'react-router-dom';
+import Login from "./pages/login/login";
+import Admin from "./pages/admin/admin";
 
 
 class App extends Component {
-    handleOnClick = (event)=>{
-        message.success(event.target.text);
-        message.warn(event.target.text);
-    }
     render() {
         return (
-            <div>
-                <Button type="primary" onClick={this.handleOnClick}>Text Button</Button>
-                <Button type="danger">Link Button</Button>
-            </div>
+            <BrowserRouter>
+                <Switch>
+                    {/* Switch:匹配第一个 */}
+                    <Route component={Login} path='/login'></Route>
+                    <Route component={Admin} path='/'></Route>
+                </Switch>
+            </BrowserRouter>
         );
     }
 }
