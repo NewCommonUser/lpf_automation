@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import logo_haizei2 from '../../assets/images/logo_haizei2.jpeg';
+import hat from '../../assets/images/hat.png';
 import {Link,withRouter} from 'react-router-dom';
 import { Menu
     // , Button
@@ -8,10 +8,14 @@ import {
     // AppstoreOutlined,
     // MenuUnfoldOutlined,
     // MenuFoldOutlined,
+    StockOutlined,
+    SlidersOutlined,
     PieChartOutlined,
+    LockOutlined,
     // DesktopOutlined,
     // ContainerOutlined,
     UnorderedListOutlined,
+    HomeOutlined,
     MailOutlined,
 } from '@ant-design/icons';
 
@@ -35,7 +39,7 @@ class LeftNav extends Component {
         return (
             <div className="left-nav">
                 <Link to='/' className="left-nav-header">
-                    <img src={logo_haizei2} alt='图片'/>
+                    <img src={hat} alt='图片'/>
                     <h1>自动化后台</h1>
                 </Link>
                 <Menu
@@ -43,14 +47,29 @@ class LeftNav extends Component {
                     defaultSelectedKeys={[path]}
                     mode="inline"
                     theme="dark"
-                    openKeys={['task']}
+                    defaultOpenKeys={['task']}
+
                 >
-                    <Menu.Item key="home" icon={<PieChartOutlined />}>
+                    <Menu.Item key="home" icon={<HomeOutlined />}>
                         <Link to='/home'>
                             首页
                         </Link>
                     </Menu.Item>
-                    <SubMenu key="task" icon={<MailOutlined />} title="任务模块">
+                    <SubMenu key="trade"  icon={<StockOutlined />} title="交易系统">
+                        {/*icon={<SlidersOutlined />}*/}
+                        <Menu.Item key="trade_double_track_analysis" icon={<UnorderedListOutlined />}>
+                            <Link to='/trade_double_track_analysis'>
+                                双轨分析
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="trade_switch_config" icon={<LockOutlined />}>
+                            <Link to='/trade_switch_config'>
+                                开关配置
+                            </Link>
+                        </Menu.Item>
+                    </SubMenu>
+
+                    <SubMenu key="task" icon={<MailOutlined />} title="时间回溯">
                         <Menu.Item key="task_category" icon={<UnorderedListOutlined />}>
                             <Link to='/task_category'>
                                 任务类型
@@ -58,12 +77,31 @@ class LeftNav extends Component {
                         </Menu.Item>
                         <Menu.Item key="task_pie" icon={<PieChartOutlined />}>
                             <Link to='/pie'>
-                                饼图
+                                时间流向
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="task_bar" icon={<PieChartOutlined />}>
                             <Link to='/bar'>
-                                条形图
+                                哪月哪日
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="task_today" icon={<PieChartOutlined />}>
+                            <Link to='/task_today'>
+                                当日任务
+                            </Link>
+                        </Menu.Item>
+                    </SubMenu>
+
+                    <SubMenu key="script"  icon={<StockOutlined />} title="我的脚本">
+                        {/*icon={<SlidersOutlined />}*/}
+                        <Menu.Item key="script_1" icon={<UnorderedListOutlined />}>
+                            <Link to='/script_1'>
+                                启动脚本
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="script_2" icon={<LockOutlined />}>
+                            <Link to='/script_2'>
+                                任务脚本
                             </Link>
                         </Menu.Item>
                     </SubMenu>

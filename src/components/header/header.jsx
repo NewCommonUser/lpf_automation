@@ -14,10 +14,16 @@ class Header extends Component {
         const path=this.props.location.pathname;
         // console.log("path的值为"+path);
         let title;
-        let array = [{'path':'/bar','name':'条形图'}
+        let array = [{'path':'/bar','name':'哪月哪日'}
             ,{'path':'/home','name':'首页'}
-            ,{'path':'/pie','name':'饼图'}
-            ,{'path':'/task_category','name':'任务类型'}];
+            ,{'path':'/pie','name':'时间流向'}
+            ,{'path':'/task_category','name':'任务类型'}
+
+            ,{'path':'/task_today','name':'当日任务'}
+
+            ,{'path':'/trade_double_track_analysis','name':'双轨分析'}
+            ,{'path':'/trade_switch_config','name':'开关配置'}
+        ];
         array.forEach(item=>{
             if(item.path===path){
                 title=item.name;

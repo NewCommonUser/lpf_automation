@@ -12,21 +12,22 @@ export const reqLogin = (username, password) => ajax(BASE + "user/login", {usern
 
 
 /**
- * 获取一级/二级类型的列表
+ * 获取任务的一级/二级类型的列表
  */
 export const reqGetTaskTypeList=(parentId)=>{
-    ajax(BASE + "/OmnifocusHandle/getTaskTypeListByParentId", {parentId}, 'GET');
+    return ajax(BASE + "/OmnifocusHandle/getTaskTypeListByParentId", {parentId}, 'GET');
 }
 
 /**
- * 添加类型
+ * 添加任务类型
  */
 export const reqAddTaskTypes=(typeName,parentId)=>{
     ajax(BASE + "/OmnifocusHandle/taskType/add", {typeName,parentId}, 'POST');
 }
 /**
- * 更新类型
+ * 更新任务类型
  */
 export const reqUpdateTaskTypes=(typeName,parentId)=>{
     ajax(BASE + "/OmnifocusHandle/taskType/update", {typeName,parentId}, 'POST');
 }
+

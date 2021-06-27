@@ -31,6 +31,8 @@ class Admin extends Component {
                                 <Route path="/line" component={Line}/>
                                 <Route path="/bar" component={Bar}/>
                                 <Route path="/task_category" component={Category}/>
+
+
                                 <Redirect to='/home'/>
                             </Switch>
                         </Content>
