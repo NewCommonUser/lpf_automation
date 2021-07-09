@@ -7,7 +7,7 @@ const Item = Form.Item;
 const Option = Select.Option;
 
 
-class BuyPageForm extends Component {
+class Positionbuild extends Component {
     state = {
         strategyType: 1, // 默认『抄底』
         historyDataPrepare:false,
@@ -25,6 +25,7 @@ class BuyPageForm extends Component {
         const price = priceInput.state.value;
 
         const strategyType = this.state.strategyType;
+        console.log('strategyType的值为',strategyType);
 
         if(strategyType===1&&(price>highestPrice*0.65)){
             message.warn("当前较前高跌幅不到35%，不允许抄底");
@@ -119,4 +120,4 @@ class BuyPageForm extends Component {
     }
 }
 
-export default BuyPageForm;
+export default Positionbuild;

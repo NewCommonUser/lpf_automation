@@ -77,8 +77,8 @@ class LeftNav extends Component {
                                 系统说明
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="trade_positionbuildingflow" icon={<LockOutlined />}>
-                            <Link to='/trade_positionbuildingflow'>
+                        <Menu.Item key="trade_Selfstock" icon={<LockOutlined />}>
+                            <Link to='/trade_Selfstock'>
                                 自选建仓
                             </Link>
                         </Menu.Item>

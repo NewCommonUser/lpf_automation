@@ -23,7 +23,7 @@ class Header extends Component {
             ,{'path':'/trade_double_track_analysis','name':'双轨分析'}
             ,{'path':'/trade_switch_config','name':'开关配置'}
             ,{'path':'/trade_system_explain','name':'系统说明'}
-            ,{'path':'/trade_positionbuildingflow','name':'自选建仓'}
+            ,{'path':'/trade_Selfstock','name':'自选建仓'}
             ,{'path':'/trade_Holdingstock','name':'持有标的'}
 
 

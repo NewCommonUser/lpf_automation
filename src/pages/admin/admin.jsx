@@ -12,7 +12,7 @@ import Pie from "../charts/pie";
 import Serviceswitch from "../script/serviceswitch";
 import Systemexplain from "../trade/systemexplain";
 import Tasktoday from "../task/tasktoday";
-import Positionbuildingflow from "../trade/positionbuildingflow";
+import Selfstock from "../trade/selfstock";
 import Holdingstock from "../trade/holdingstock";
 
 const { Footer, Sider, Content } = Layout;
@@ -34,7 +34,7 @@ class Admin extends Component {
                                 <Route path="/home" component={Home}/>
                                 {/*关于交易的路由组件*/}
                                 <Route path="/trade_system_explain" component={Systemexplain}/>
-                                <Route path="/trade_positionbuildingflow" component={Positionbuildingflow}/>
+                                <Route path="/trade_Selfstock" component={Selfstock}/>
                                 <Route path="/trade_Holdingstock" component={Holdingstock}/>
 
 

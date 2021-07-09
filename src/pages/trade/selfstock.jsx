@@ -6,14 +6,14 @@ import { SearchOutlined } from '@ant-design/icons';
 import LinkButton from "../../components/link-button/link-button";
 import PubSub from 'pubsub-js' //引入
 import AddForm from "../category/add-form";
-import BuyPageForm from "./buy-page-form";
-import WrappedBuyPageForm from "./buy-page-form";
+import Positionbuild from "./positionbuild";
+import WrappedPositionbuild from "./positionbuild";
 
 
 /**
- * 建仓流程组件
+ * 自选标的组件
  */
-class Positionbuildingflow extends Component {
+class Selfstock extends Component {
 
     state={
         stockArr:[],
@@ -123,7 +123,7 @@ class Positionbuildingflow extends Component {
         this.setState({ searchText: '' });
     };
 
-    positionBuilding=(stockObj)=>{
+    openPositionBuildingPage=(stockObj)=>{
         this.setState({currentSelectStockObj:stockObj});
         this.setState({showStatus:1});
     }
@@ -175,7 +175,7 @@ class Positionbuildingflow extends Component {
                     //返回需要显示的界面标签
                     return(
                         <span>
-                            <LinkButton onClick={()=>{this.positionBuilding(stockObj);}}>建仓</LinkButton>
+                            <LinkButton onClick={()=>{this.openPositionBuildingPage(stockObj);}}>建仓</LinkButton>
                         </span>
                     );
                 }
@@ -197,7 +197,7 @@ class Positionbuildingflow extends Component {
                            okButtonProps={{htmlType: 'submit', form: 'editForm'}}
                            onCancel={this.handleCancel}>
                         <p>
-                            <BuyPageForm name={this.state.currentSelectStockObj.name} stockId={this.state.currentSelectStockObj.id}/>
+                            <Positionbuild name={this.state.currentSelectStockObj.name} stockId={this.state.currentSelectStockObj.id}/>
                                 {/*<Item>*/}
                                 {/*    <Button type="primary" htmlType="submit" className="login-form-button">*/}
                                 {/*        买入*/}
@@ -212,4 +212,4 @@ class Positionbuildingflow extends Component {
     }
 }
 
-export default Positionbuildingflow;
+export default Selfstock;
