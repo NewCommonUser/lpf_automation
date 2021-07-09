@@ -18,11 +18,19 @@ class Header extends Component {
             ,{'path':'/home','name':'首页'}
             ,{'path':'/pie','name':'时间流向'}
             ,{'path':'/task_category','name':'任务类型'}
-
             ,{'path':'/task_today','name':'当日任务'}
-
+            //交易类**********************************
             ,{'path':'/trade_double_track_analysis','name':'双轨分析'}
             ,{'path':'/trade_switch_config','name':'开关配置'}
+            ,{'path':'/trade_system_explain','name':'系统说明'}
+            ,{'path':'/trade_positionbuildingflow','name':'自选建仓'}
+            ,{'path':'/trade_Holdingstock','name':'持有标的'}
+
+
+            //脚本类************************************
+            ,{'path':'/script_service_switch','name':'服务开关'}
+            // ,{'path':'/trade_switch_config','name':'开关配置'}
+
         ];
         array.forEach(item=>{
             if(item.path===path){

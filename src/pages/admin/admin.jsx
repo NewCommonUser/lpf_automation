@@ -9,6 +9,11 @@ import Category from '../category/category';
 import Bar from "../charts/bar";
 import Line from "../charts/line";
 import Pie from "../charts/pie";
+import Serviceswitch from "../script/serviceswitch";
+import Systemexplain from "../trade/systemexplain";
+import Tasktoday from "../task/tasktoday";
+import Positionbuildingflow from "../trade/positionbuildingflow";
+import Holdingstock from "../trade/holdingstock";
 
 const { Footer, Sider, Content } = Layout;
 
@@ -27,12 +32,21 @@ class Admin extends Component {
                         <Content style={{margin:20,backgroundColor:'white'}}>
                             <Switch>
                                 <Route path="/home" component={Home}/>
+                                {/*关于交易的路由组件*/}
+                                <Route path="/trade_system_explain" component={Systemexplain}/>
+                                <Route path="/trade_positionbuildingflow" component={Positionbuildingflow}/>
+                                <Route path="/trade_Holdingstock" component={Holdingstock}/>
+
+
+                                {/*关于任务的路由组件*/}
+                                <Route path="/task_category" component={Category}/>
+                                <Route path="/task_today" component={Tasktoday}/>
                                 <Route path="/pie" component={Pie}/>
                                 <Route path="/line" component={Line}/>
                                 <Route path="/bar" component={Bar}/>
-                                <Route path="/task_category" component={Category}/>
-
-
+                                {/*关于脚本的路由组件*/}
+                                <Route path="/script_service_switch" component={Serviceswitch}/>
+                                {/*默认显示的路由组件*/}
                                 <Redirect to='/home'/>
                             </Switch>
                         </Content>

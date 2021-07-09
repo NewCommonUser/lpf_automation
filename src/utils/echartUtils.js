@@ -13,9 +13,15 @@
 
 export function generateChartConfig(title,dataSource,legendDataKeyOfDataSource
                                     ,seriesDataKeyOfDataSource,xAxisKeyOfSeriesData
-                                    ,yValueKeyOfSeriesData,chartsType) {
+                                    ,yValueKeyOfSeriesData,chartsType,isDisplayLegendData) {
     //1.根据用户输入——转换成echart需要的『配置对象configObj』的结构
-    const legendData = dataSource.map(item=>item[legendDataKeyOfDataSource]);
+    //从『数据源』中解析出解释数据
+    let legendData=[];
+    if(isDisplayLegendData){
+        legendData = dataSource.map(item=>item[legendDataKeyOfDataSource]);
+    }
+
+
     const xAxisData = dataSource[0][seriesDataKeyOfDataSource].map(item=>item[xAxisKeyOfSeriesData])
     const seriesData = dataSource.map(item=>{
         return {
@@ -53,8 +59,8 @@ export function generateChartConfig(title,dataSource,legendDataKeyOfDataSource
             feature : {
                 dataView : {show: true, readOnly: false},
                 magicType : {show: true, type: ['line', 'bar']},
-                restore : {show: true},
-                saveAsImage : {show: true}
+                // restore : {show: true},
+                // saveAsImage : {show: true}
             }
         },
         xAxis: xAxis,

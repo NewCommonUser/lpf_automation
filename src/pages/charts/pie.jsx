@@ -99,10 +99,10 @@ class Pie extends Component {
         return (
             <div>
                 <div style={{display: 'flex'}}>
-                    <Card style={{height: '100%', width: '50%'}}>
+                    <Card style={{height: '50%', width: '35%'}}>
                         <ReactEcharts option={this.getOption_pieDataDivideByType()}></ReactEcharts>
                     </Card>
-                    <Card style={{height: '100%', width: '50%'}}>
+                    <Card style={{height: '50%', width: '65%'}}>
                         <Table bordered
                             // loading={this.loading}
                                rowkey={"id"}
@@ -113,7 +113,7 @@ class Pie extends Component {
                     </Card>
                 </div>
                 <div style={{display: 'flex'}}>
-                    <Card style={{height: '100%', width: '100%'}}>
+                    <Card style={{height: '50%', width: '100%'}}>
                         <ReactEcharts option={this.getOption_pieDataDivideByProject()}></ReactEcharts>
                     </Card>
                 </div>

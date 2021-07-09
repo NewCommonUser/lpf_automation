@@ -69,7 +69,7 @@ class Bar extends Component {
         findTaskTimeEveryDay().then((response) => {
             if (response.data.success === true) {
                 //去除类型列表（可能是一级、可能时子级）
-                const seriesData = response.data.result;
+                const seriesData = response.data.result.reverse();
                 //更新状态
                 this.setState({barData_day: [{title: '每日任务时间', 'data': seriesData}]});
             }
@@ -78,7 +78,7 @@ class Bar extends Component {
         findTaskTimeEveryMonth().then((response) => {
             if (response.data.success === true) {
                 //去除类型列表（可能是一级、可能时子级）
-                const seriesData = response.data.result;
+                const seriesData = response.data.result.reverse();
                 //更新状态
                 this.setState({barData_month: [{title: '每月任务时间', 'data': seriesData}]});
             }
@@ -102,7 +102,7 @@ class Bar extends Component {
         const seriesDataKeyOfDataSource = 'data';//dataSource对象中的——连续数据的标识符（连续数据通过dataSource对象的data属性来指定）
         const xAxisKeyOfSeriesData = 'name';//seriesData连续数据对象中的——x轴的标识符——通过name属性来指定
         const yValueKeyOfSeriesData = 'value';//seriesData连续数据对象中的——y轴的标识符——通过value属性来指定
-        return generateChartConfig('', dataSource, legendDataKeyOfDataSource, seriesDataKeyOfDataSource, xAxisKeyOfSeriesData, yValueKeyOfSeriesData, chartsType);
+        return generateChartConfig('每日任务时间', dataSource, legendDataKeyOfDataSource, seriesDataKeyOfDataSource, xAxisKeyOfSeriesData, yValueKeyOfSeriesData, chartsType,false);
     }
 
     /**
@@ -120,7 +120,7 @@ class Bar extends Component {
         const seriesDataKeyOfDataSource = 'data';//dataSource对象中的——连续数据的标识符（连续数据通过dataSource对象的data属性来指定）
         const xAxisKeyOfSeriesData = 'name';//seriesData连续数据对象中的——x轴的标识符——通过name属性来指定
         const yValueKeyOfSeriesData = 'value';//seriesData连续数据对象中的——y轴的标识符——通过value属性来指定
-        return generateChartConfig('', dataSource, legendDataKeyOfDataSource, seriesDataKeyOfDataSource, xAxisKeyOfSeriesData, yValueKeyOfSeriesData, chartsType);
+        return generateChartConfig('每日任务时间', dataSource, legendDataKeyOfDataSource, seriesDataKeyOfDataSource, xAxisKeyOfSeriesData, yValueKeyOfSeriesData, chartsType,false);
     }
 
     /**
@@ -138,7 +138,7 @@ class Bar extends Component {
         const seriesDataKeyOfDataSource = 'data';//dataSource对象中的——连续数据的标识符（连续数据通过dataSource对象的data属性来指定）
         const xAxisKeyOfSeriesData = 'name';//seriesData连续数据对象中的——x轴的标识符——通过name属性来指定
         const yValueKeyOfSeriesData = 'value';//seriesData连续数据对象中的——y轴的标识符——通过value属性来指定
-        return generateChartConfig('', dataSource, legendDataKeyOfDataSource, seriesDataKeyOfDataSource, xAxisKeyOfSeriesData, yValueKeyOfSeriesData, chartsType);
+        return generateChartConfig('每月任务时间', dataSource, legendDataKeyOfDataSource, seriesDataKeyOfDataSource, xAxisKeyOfSeriesData, yValueKeyOfSeriesData, chartsType);
     }
     /**
      * 返回柱状图的(month)配置对象
@@ -155,7 +155,7 @@ class Bar extends Component {
         const seriesDataKeyOfDataSource = 'data';//dataSource对象中的——连续数据的标识符（连续数据通过dataSource对象的data属性来指定）
         const xAxisKeyOfSeriesData = 'name';//seriesData连续数据对象中的——x轴的标识符——通过name属性来指定
         const yValueKeyOfSeriesData = 'value';//seriesData连续数据对象中的——y轴的标识符——通过value属性来指定
-        return generateChartConfig('', dataSource, legendDataKeyOfDataSource, seriesDataKeyOfDataSource, xAxisKeyOfSeriesData, yValueKeyOfSeriesData, chartsType);
+        return generateChartConfig('每月任务时间', dataSource, legendDataKeyOfDataSource, seriesDataKeyOfDataSource, xAxisKeyOfSeriesData, yValueKeyOfSeriesData, chartsType);
     }
 
     render() {
@@ -186,30 +186,52 @@ class Bar extends Component {
         const {barData_day}=this.state;
         const {barData_month}=this.state;
         //升序排列(通过concat方法，实现数组的浅拷贝，避免操作到state中的数据)
-        let barData_day_orderAsc=barData_day[0].data.concat();
-        let barData_month_orderAsc=barData_month[0].data.concat();
+        let barData_day_orderDesc=barData_day[0].data.concat();
+        let barData_month_orderDesc=barData_month[0].data.concat();
         //降序排列
-        let barData_day_orderDesc=barData_day_orderAsc.reverse();
-        let barData_month_orderDesc=barData_month_orderAsc.reverse();
+        let barData_day_orderAsc=barData_day_orderDesc.reverse();
+        let barData_month_orderAsc=barData_month_orderDesc.reverse();
 
 
         return (
             <div>
                 <div style={{display: 'flex'}}>
                     {/*<Card type='primary' onClick='this.update'>更新</Card>*/}
-                    <Card style={{height: '100%', width: '25%'}}>
+                    <Card style={{height: '60%', width: '25%'}}>
                         <ReactEcharts option={this.getOption_dayChart_bar()}></ReactEcharts>
                     </Card>
-                    <Card style={{height: '100%', width: '25%'}}>
+                    <Card style={{height: '60%', width: '25%'}}>
                         <ReactEcharts option={this.getOption_dayChart_line()}></ReactEcharts>
                     </Card>
-                    <Card style={{height: '100%', width: '25%'}}>
+                    <Card style={{height: '60%', width: '25%'}}>
                         <ReactEcharts option={this.getOption_monthChart_bar()}></ReactEcharts>
                     </Card>
-                    <Card style={{height: '100%', width: '25%'}}>
+                    <Card style={{height: '60%', width: '25%'}}>
                         <ReactEcharts option={this.getOption_monthChart_line()}></ReactEcharts>
                     </Card>
                 </div>
+
+                {/*<div style={{display: 'flex'}}>*/}
+                {/*    <Card style={{height: '100%', width: '50%'}}>*/}
+                {/*        <Table bordered*/}
+                {/*            // loading={this.loading}*/}
+                {/*               rowkey={"id"}*/}
+                {/*               dataSource={barData_day_orderDesc}*/}
+                {/*               columns={columns_day}*/}
+                {/*               pagination={{defaultPageSize: 5, showQuickJumper: true}}*/}
+                {/*        />*/}
+                {/*    </Card>*/}
+                {/*    <Card style={{height: '100%', width: '50%'}}>*/}
+                {/*        <Table bordered*/}
+                {/*            // loading={this.loading}*/}
+                {/*               rowkey={"id"}*/}
+                {/*               dataSource={barData_month_orderDesc}*/}
+                {/*               columns={columns_month}*/}
+                {/*               pagination={{defaultPageSize: 5, showQuickJumper: true}}*/}
+                {/*        />*/}
+                {/*    </Card>*/}
+                {/*</div>*/}
+
                 <div style={{display: 'flex'}}>
                     <Card style={{height: '100%', width: '50%'}}>
                         <Table bordered
@@ -217,7 +239,7 @@ class Bar extends Component {
                                rowkey={"id"}
                                dataSource={barData_day_orderDesc}
                                columns={columns_day}
-                               pagination={{defaultPageSize: 5, showQuickJumper: true}}
+                               pagination={{defaultPageSize: 3, showQuickJumper: true}}
                         />
                     </Card>
                     <Card style={{height: '100%', width: '50%'}}>

@@ -14,13 +14,18 @@ import {
     LockOutlined,
     // DesktopOutlined,
     // ContainerOutlined,
+    CalendarOutlined,
     UnorderedListOutlined,
     HomeOutlined,
     MailOutlined,
+    CodeOutlined,
+    PoweroffOutlined,
+
 } from '@ant-design/icons';
 
 import './left-nav.less';
 import Category from "../../pages/category/category";
+import Holdingstock from "../../pages/trade/holdingstock";
 
 const { SubMenu } = Menu;
 
@@ -47,7 +52,7 @@ class LeftNav extends Component {
                     defaultSelectedKeys={[path]}
                     mode="inline"
                     theme="dark"
-                    defaultOpenKeys={['task']}
+                    defaultOpenKeys={['trade','task','script']}
 
                 >
                     <Menu.Item key="home" icon={<HomeOutlined />}>
@@ -67,6 +72,22 @@ class LeftNav extends Component {
                                 开关配置
                             </Link>
                         </Menu.Item>
+                        <Menu.Item key="trade_system_explain" icon={<LockOutlined />}>
+                            <Link to='/trade_system_explain'>
+                                系统说明
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="trade_positionbuildingflow" icon={<LockOutlined />}>
+                            <Link to='/trade_positionbuildingflow'>
+                                自选建仓
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="trade_Holdingstock" icon={<LockOutlined />}>
+                            <Link to='/trade_Holdingstock'>
+                                持有标的
+                            </Link>
+                        </Menu.Item>
+
                     </SubMenu>
 
                     <SubMenu key="task" icon={<MailOutlined />} title="时间回溯">
@@ -80,7 +101,7 @@ class LeftNav extends Component {
                                 时间流向
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="task_bar" icon={<PieChartOutlined />}>
+                        <Menu.Item key="task_bar" icon={<CalendarOutlined />}>
                             <Link to='/bar'>
                                 哪月哪日
                             </Link>
@@ -94,12 +115,12 @@ class LeftNav extends Component {
 
                     <SubMenu key="script"  icon={<StockOutlined />} title="我的脚本">
                         {/*icon={<SlidersOutlined />}*/}
-                        <Menu.Item key="script_1" icon={<UnorderedListOutlined />}>
-                            <Link to='/script_1'>
-                                启动脚本
+                        <Menu.Item key="script_service_switch" icon={<PoweroffOutlined />}>
+                            <Link to='/script_service_switch'>
+                                服务开关
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="script_2" icon={<LockOutlined />}>
+                        <Menu.Item key="script_2" icon={<CodeOutlined />}>
                             <Link to='/script_2'>
                                 任务脚本
                             </Link>

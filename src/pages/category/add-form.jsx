@@ -13,7 +13,7 @@ class AddForm extends Component {
                 onFinish={this.onFinish}
             >
                 <Item initialValue='0' >
-                    <Select name="parentId"  >
+                    所属分类：<Select name="parentId"  >
                         <Option value='0'>一级分类</Option>
                         <Option value='1'>读书</Option>
                         <Option value='2'>电脑</Option>
@@ -21,10 +21,8 @@ class AddForm extends Component {
                 </Item>
 
                 <Item initialValue="">
-                    <Input placeholder='请输入待添加的任务类型名称' />
+                    添加名称：<Input placeholder='请输入待添加的任务类型名称' />
                 </Item>
-
-
             </Form>
         );
     }
