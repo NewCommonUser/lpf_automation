@@ -4,14 +4,24 @@ import LinkButton from "../../components/link-button/link-button";
 import {findAllSelfStock, getAllHoldStock} from "../../api/tradeApi";
 import {SearchOutlined} from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
+import Positionchange from "./positionchange";
+
 class Holdingstock extends Component {
     state={
         stockArr:[],
         showStatus:0,
-        // 标识添加/更新的确认框是否显示,0:都不显示，1：显示添加，2：显示更新
+        // 0：默认不现实模态框，1：显示模态框
         currentSelectStockObj:{},
         //当前『表格中』选中的证券对象
 
+    }
+    openPositionChangePage=(stockObj)=>{
+        console.log(stockObj);
+        this.setState({currentSelectStockObj:stockObj});
+        this.setState({showStatus:1});
+    }
+    handleCancel=()=>{
+        this.setState({showStatus:0});
     }
 
     componentDidMount() {
@@ -30,6 +40,11 @@ class Holdingstock extends Component {
     }
 
     render() {
+
+        const Item=Form.Item;
+        const {showStatus} = this.state;
+
+
         const columns_config = [
             {
                 title: '证券名称',
@@ -94,6 +109,18 @@ class Holdingstock extends Component {
                            pagination={{defaultPageSize: 10, showQuickJumper: true}}
                     />
                 </Card>
+                <Modal title="仓位加减" visible={showStatus===1}
+                       okButtonProps={{htmlType: 'submit', form: 'editForm'}}
+                       onCancel={this.handleCancel}>
+                    <p>
+                        <Positionchange name={this.state.currentSelectStockObj.stockName} stockId={this.state.currentSelectStockObj.id}/>
+                        {/*<Item>*/}
+                        {/*    <Button type="primary" htmlType="submit" className="login-form-button">*/}
+                        {/*        买入*/}
+                        {/*    </Button>*/}
+                        {/*</Item>*/}
+                    </p>
+                </Modal>
             </div>
         );
     }

@@ -23,9 +23,8 @@ class Positionbuild extends Component {
         const stockId = stockIdInput.state.value;
         const highestPrice = highestPriceInput.state.value;
         const price = priceInput.state.value;
-
+        //拿到radio的值
         const strategyType = this.state.strategyType;
-        console.log('strategyType的值为',strategyType);
 
         if(strategyType===1&&(price>highestPrice*0.65)){
             message.warn("当前较前高跌幅不到35%，不允许抄底");

@@ -23,7 +23,6 @@ class Selfstock extends Component {
         //当前『表格中』选中的证券对象
 
     }
-    formRef = React.createRef();
 
 
     buy = ()=>{
@@ -203,7 +202,6 @@ class Selfstock extends Component {
                                 {/*        买入*/}
                                 {/*    </Button>*/}
                                 {/*</Item>*/}
-
                         </p>
                     </Modal>
                 </Card>
