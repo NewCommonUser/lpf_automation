@@ -14,6 +14,7 @@ import Systemexplain from "../trade/systemexplain";
 import Tasktoday from "../task/tasktoday";
 import Selfstock from "../trade/selfstock";
 import Holdingstock from "../trade/holdingstock";
+import DoubleTrackAnalysis from "../trade/doubleTrackAnalysis";
 
 const { Footer, Sider, Content } = Layout;
 
@@ -36,6 +37,7 @@ class Admin extends Component {
                                 <Route path="/trade_system_explain" component={Systemexplain}/>
                                 <Route path="/trade_Selfstock" component={Selfstock}/>
                                 <Route path="/trade_Holdingstock" component={Holdingstock}/>
+                                <Route path="/trade_double_track_analysis" component={DoubleTrackAnalysis}/>
 
 
                                 {/*关于任务的路由组件*/}

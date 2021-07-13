@@ -197,11 +197,6 @@ class Selfstock extends Component {
                            onCancel={this.handleCancel}>
                         <p>
                             <Positionbuild name={this.state.currentSelectStockObj.name} stockId={this.state.currentSelectStockObj.id}/>
-                                {/*<Item>*/}
-                                {/*    <Button type="primary" htmlType="submit" className="login-form-button">*/}
-                                {/*        买入*/}
-                                {/*    </Button>*/}
-                                {/*</Item>*/}
                         </p>
                     </Modal>
                 </Card>

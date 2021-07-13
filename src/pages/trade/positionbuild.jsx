@@ -75,7 +75,7 @@ class Positionbuild extends Component {
                         }} placeholder='证券代码' name={'id'} value={stockId}/>
                         </Item>
 
-                        <Radio.Group defaultValue="0" onChange={(event)=>{this.setState({
+                        <Radio.Group defaultValue="1" onChange={(event)=>{this.setState({
                             strategyType:event.target.value},()=>{console.log(this.state.strategyType)});
 
                         }} size="small" style={{marginTop: 16}}>
@@ -87,13 +87,13 @@ class Positionbuild extends Component {
                         <Item initialValue="">
                             交易价格：<Input ref={(a) => {
                             this.priceInput = a;
-                        }} placeholder='交易价格' name={'price'}/>
+                        }} placeholder='交易价格' autocomplete={'off'} name={'price'}/>
                         </Item>
 
                         <Item initialValue="">
                             抄底前高：<Input ref={(a) => {
                             this.highestPriceInput = a;
-                        }} placeholder='抄底预期的之前高点' name={'highestPrice'}/>
+                        }} placeholder='抄底预期的之前高点' autocomplete={'off'} name={'highestPrice'}/>
                         </Item>
 
                         {/*<Item initialValue="">*/}

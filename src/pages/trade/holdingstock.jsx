@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
 import {Card, Table, Input, Button, Space, Modal,Form} from "antd";
 import LinkButton from "../../components/link-button/link-button";
-import {findAllSelfStock, getAllHoldStock} from "../../api/tradeApi";
+import {addPosition, findAllSelfStock, getAllHoldStock} from "../../api/tradeApi";
 import {SearchOutlined} from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import Positionchange from "./positionchange";
+import Sell from "./sell";
+import Addposition from "./addposition";
+import Tradelog from "./tradelog";
 
 class Holdingstock extends Component {
     state={
@@ -15,14 +18,57 @@ class Holdingstock extends Component {
         //当前『表格中』选中的证券对象
 
     }
+    /**
+     * 打开仓位更改页面
+     * @param stockObj
+     */
     openPositionChangePage=(stockObj)=>{
-        console.log(stockObj);
         this.setState({currentSelectStockObj:stockObj});
         this.setState({showStatus:1});
     }
+    /**
+     * 加仓
+     * @param stockObj
+     */
+    openAddPositionPage=(stockObj)=>{
+        this.setState({currentSelectStockObj:stockObj});
+        this.setState({showStatus:3});
+        // addPosition(stockObj.stockId,stockObj.stockName,1,1).then().catch();
+    }
+
+    /**
+     * 打开交易日志页面
+     * @param stockObj
+     */
+    openTradeLogPage=(stockObj)=>{
+        this.setState({currentSelectStockObj:stockObj});
+        this.setState({showStatus:4});
+    }
+    /**
+     * 打开买卖页面
+     * @param stockObj
+     */
+    openSellPage=(stockObj)=>{
+        console.log(stockObj);
+        this.setState({currentSelectStockObj:stockObj});
+        this.setState({showStatus:2});
+    }
+
+
+
     handleCancel=()=>{
         this.setState({showStatus:0});
     }
+    /**
+     * 交易日志页面，取消按钮
+     */
+    tradeLogPageCancel=(a)=>{
+        console.log(a);
+        Modal.destroyAll();
+
+    }
+
+
 
     componentDidMount() {
         getAllHoldStock().then((response) => {
@@ -30,7 +76,9 @@ class Holdingstock extends Component {
                 const seriesData = response.data.result.reverse();
                 //计算盈亏率（根据后台返回的字段，得到新的字段）
                 seriesData.map((value,index)=>{
-                    value.profitAndLoss=(value.shoupanPrice-value.averageCost)/value.averageCost;
+                    let profitAndLoss=(value.shoupanPrice-value.averageCost)/value.averageCost;
+                    profitAndLoss=profitAndLoss.toFixed(3);
+                    value.profitAndLoss=profitAndLoss;
                     return value;
                 });
                 //更新状态
@@ -50,33 +98,33 @@ class Holdingstock extends Component {
                 title: '证券名称',
                 dataIndex: 'stockName',
                 key: 'stockName',
-                width: '15%',
+                width: '10%',
                 ...this.getColumnSearchProps('name'),
             },
             {
                 title: '证券代号',
                 dataIndex: 'stockId',
                 key: 'stockId',
-                width: '15%',
+                width: '10%',
                 ...this.getColumnSearchProps('id'),
             },
             {
                 title: '收盘价',
                 dataIndex: 'shoupanPrice',
                 key: 'shoupanPrice',
-                width: '10%',
+                width: '5%',
             },
             {
                 title: '平均成本',
                 dataIndex: 'averageCost',
                 key: 'averageCost',
-                width: '10%',
+                width: '5%',
             },
             {
                 title: '盈亏率',
                 dataIndex: 'profitAndLoss',
                 key: 'profitAndLoss',
-                width: '10%',
+                width: '5%',
             },
             {
                 title: '持有数量',
@@ -85,13 +133,23 @@ class Holdingstock extends Component {
                 width: '10%',
             },
             {
+                title: '做T卖出数量',
+                dataIndex: 'tnum',
+                key: 'tnum',
+                width: '12%',
+            },
+            {
                 title: '操作',
                 width:300,
                 render: (stockObj)=>{
                     //返回需要显示的界面标签
                     return(
                         <span>
-                            <LinkButton onClick={()=>{this.openPositionChangePage(stockObj);}}>加减仓</LinkButton>
+                            <LinkButton onClick={()=>{this.openAddPositionPage(stockObj);}}>加仓</LinkButton>
+                            <LinkButton onClick={()=>{this.openPositionChangePage(stockObj);}}>做T</LinkButton>
+                            <LinkButton onClick={()=>{this.openSellPage(stockObj);}}>卖出</LinkButton>
+                            <LinkButton onClick={()=>{this.openTradeLogPage(stockObj);}}>交易记录</LinkButton>
+
                         </span>
                     );
                 }
@@ -109,16 +167,37 @@ class Holdingstock extends Component {
                            pagination={{defaultPageSize: 10, showQuickJumper: true}}
                     />
                 </Card>
-                <Modal title="仓位加减" visible={showStatus===1}
+                <Modal  title="卖出" visible={showStatus===2}
                        okButtonProps={{htmlType: 'submit', form: 'editForm'}}
                        onCancel={this.handleCancel}>
                     <p>
-                        <Positionchange name={this.state.currentSelectStockObj.stockName} stockId={this.state.currentSelectStockObj.id}/>
-                        {/*<Item>*/}
-                        {/*    <Button type="primary" htmlType="submit" className="login-form-button">*/}
-                        {/*        买入*/}
-                        {/*    </Button>*/}
-                        {/*</Item>*/}
+                        <Sell tnum={this.state.currentSelectStockObj.tnum} holdingNum={this.state.currentSelectStockObj.tradeNum} name={this.state.currentSelectStockObj.stockName} stockId={this.state.currentSelectStockObj.stockId}/>
+                    </p>
+                </Modal>
+                <Modal title="做T" visible={showStatus===1}
+                       okButtonProps={{htmlType: 'submit', form: 'editForm'}}
+                       onCancel={this.handleCancel}>
+                    <p>
+                        <Positionchange tnum={this.state.currentSelectStockObj.tnum} holdingNum={this.state.currentSelectStockObj.tradeNum} name={this.state.currentSelectStockObj.stockName} stockId={this.state.currentSelectStockObj.stockId}/>
+                    </p>
+                </Modal>
+                <Modal title="加仓" visible={showStatus===3}
+                       okButtonProps={{htmlType: 'submit', form: 'editForm'}}
+                       onCancel={this.handleCancel}>
+                    <p>
+                        <Addposition tnum={this.state.currentSelectStockObj.tnum} holdingNum={this.state.currentSelectStockObj.tradeNum} name={this.state.currentSelectStockObj.stockName} stockId={this.state.currentSelectStockObj.stockId}/>
+                    </p>
+                </Modal>
+                <Modal  title="交易日志"
+                        visible={showStatus===4}
+                        destroyOnClose //设置关闭时销毁
+                        width={1000}
+                       // okButtonProps={{htmlType: 'submit', form: 'editForm'}}
+                       onCancel={this.handleCancel}>
+                    <p>
+                        {/*<Tradelog {...this.state.currentSelectStockObj} tnum={this.state.currentSelectStockObj.tnum} holdingNum={this.state.currentSelectStockObj.tradeNum} name={this.state.currentSelectStockObj.stockName} stockId={this.state.currentSelectStockObj.stockId}/>*/}
+                        <Tradelog {...this.state.currentSelectStockObj}/>
+
                     </p>
                 </Modal>
             </div>
