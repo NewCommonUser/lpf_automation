@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card, Table, Input, Button, Space, Modal,Form} from "antd";
-import {buyStock, findAllSelfStock} from "../../api/tradeApi";
+import {buyStock, findAllSelfStock, selfStock5MonthCheck, signStock} from "../../api/tradeApi";
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 import LinkButton from "../../components/link-button/link-button";
@@ -21,21 +21,35 @@ class Selfstock extends Component {
         // 标识添加/更新的确认框是否显示,0:都不显示，1：显示添加，2：显示更新
         currentSelectStockObj:{},
         //当前『表格中』选中的证券对象
-
+        loading:true,
     }
 
 
     buy = ()=>{
     }
     componentDidMount() {
-        findAllSelfStock().then((response) => {
-            if (response.data.success === true) {
-                const seriesData = response.data.result.reverse();
-                console.log(seriesData);
-                //更新状态
-                this.setState({stockArr: seriesData});
-            }
-        }).catch();
+        if(this.props.datasource==='selfStock5MonthCheck'){
+            selfStock5MonthCheck().then((response) => {
+                if (response.data.success === true) {
+                    const seriesData = response.data.result.reverse();
+                    console.log(seriesData);
+                    //更新状态
+                    this.setState({loading:false});
+                    this.setState({stockArr: seriesData});
+                }
+            }).catch();
+        }else{
+            findAllSelfStock().then((response) => {
+                if (response.data.success === true) {
+                    const seriesData = response.data.result.reverse();
+                    console.log(seriesData);
+                    //更新状态
+                    this.setState({loading:false});
+                    this.setState({stockArr: seriesData});
+                }
+            }).catch();
+        }
+
         /**
          * 订阅『关闭建仓页面』
          */
@@ -126,6 +140,14 @@ class Selfstock extends Component {
         this.setState({currentSelectStockObj:stockObj});
         this.setState({showStatus:1});
     }
+    sign=(stockObj)=>{
+        signStock(stockObj.id).then((response) => {
+            if (response.data.success === true) {
+                //更新状态
+                alert(response.data.result);
+            }
+        }).catch();
+    }
     handleCancel=()=>{
         this.setState({showStatus:0});
     }
@@ -175,6 +197,7 @@ class Selfstock extends Component {
                     return(
                         <span>
                             <LinkButton onClick={()=>{this.openPositionBuildingPage(stockObj);}}>建仓</LinkButton>
+                            <LinkButton onClick={()=>{this.sign(stockObj);}}>机会标记</LinkButton>
                         </span>
                     );
                 }
@@ -186,7 +209,7 @@ class Selfstock extends Component {
             <div>
                 <Card style={{height: '100%', width: '100%'}}>
                     <Table bordered
-                        // loading={this.loading}
+                           loading={this.state.loading}
                            rowkey={"id"}
                            dataSource={this.state.stockArr}
                            columns={columns_config}

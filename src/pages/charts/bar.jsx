@@ -248,7 +248,7 @@ class Bar extends Component {
                                rowkey={"id"}
                                dataSource={barData_month_orderDesc}
                                columns={columns_month}
-                               pagination={{defaultPageSize: 5, showQuickJumper: true}}
+                               pagination={{defaultPageSize: 3, showQuickJumper: true}}
                         />
                     </Card>
                 </div>

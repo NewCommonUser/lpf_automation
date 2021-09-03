@@ -2,11 +2,29 @@ import ajax from './ajax';
 
 const BASE = '';
 
-
+/**
+ * 获取所有的自选股
+ * @returns {*}
+ */
 export const findAllSelfStock=()=>{
     return ajax(BASE + "/tradingsystem/findAllSelfStock", {}, 'GET');
 }
 
+/**
+ * 站上五月均线的自选股
+ * @returns {*}
+ */
+export const selfStock5MonthCheck=()=>{
+    return ajax(BASE + "/tradingsystem/selfStock5MonthCheck", {}, 'GET');
+}
+
+/**
+ * 清空接口selfStock5MonthCheck缓存
+ * @returns {*}
+ */
+export const del_api_selfStock5MonthCheck_cache=()=>{
+    return ajax(BASE + "/tradingsystem/del/api_selfStock5MonthCheck_cache", {}, 'GET');
+}
 
 /**
  * 持仓股检查分析
@@ -26,6 +44,15 @@ export const etf5Day=()=>{
  */
 export const findTradeLogByStockId=(stockId)=>{
     return ajax(BASE + "/tradingsystem/findTradeLogByStockId/"+stockId, {}, 'GET');
+}
+
+/**
+ * 标记机会
+ * @param stockId
+ * @returns {*}
+ */
+export const signStock=(stockId)=>{
+    return ajax(BASE + "/tradingsystem/signStock/"+stockId, {}, 'GET');
 }
 
 

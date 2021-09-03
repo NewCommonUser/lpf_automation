@@ -28,10 +28,10 @@ class Positionchange extends Component {
         const addSubtractType = this.state.addSubtractType;
 
         //参数校验
-        if(addSubtractType==-1&&tradeNum>tnum){
-            alert("买入做T的数量不能大于当前卖出做T的数量");
-            return;
-        }
+        // if(addSubtractType==-1&&tradeNum>tnum){
+        //     alert("买入做T的数量不能大于当前卖出做T的数量");
+        //     return;
+        // }
         if(addSubtractType==1&&tradeNum>=holdingNum){
             alert("卖出做T的数量不能大于等于当前持有的数量");
             return;
