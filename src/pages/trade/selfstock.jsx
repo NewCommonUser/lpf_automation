@@ -8,6 +8,8 @@ import PubSub from 'pubsub-js' //引入
 import AddForm from "../category/add-form";
 import Positionbuild from "./positionbuild";
 import WrappedPositionbuild from "./positionbuild";
+import Sell from "./sell";
+import Klinedatapersist from "./klinedatapersist";
 
 
 /**
@@ -140,6 +142,12 @@ class Selfstock extends Component {
         this.setState({currentSelectStockObj:stockObj});
         this.setState({showStatus:1});
     }
+
+    k_line_dataPersist=(stockObj)=>{
+        this.setState({currentSelectStockObj:stockObj});
+        this.setState({showStatus:3});
+    }
+
     sign=(stockObj)=>{
         signStock(stockObj.id).then((response) => {
             if (response.data.success === true) {
@@ -198,6 +206,7 @@ class Selfstock extends Component {
                         <span>
                             <LinkButton onClick={()=>{this.openPositionBuildingPage(stockObj);}}>建仓</LinkButton>
                             <LinkButton onClick={()=>{this.sign(stockObj);}}>机会标记</LinkButton>
+                            <LinkButton onClick={()=>{this.k_line_dataPersist(stockObj);}}>k线数据持久化</LinkButton>
                         </span>
                     );
                 }
@@ -220,6 +229,13 @@ class Selfstock extends Component {
                            onCancel={this.handleCancel}>
                         <p>
                             <Positionbuild name={this.state.currentSelectStockObj.name} stockId={this.state.currentSelectStockObj.id}/>
+                        </p>
+                    </Modal>
+                    <Modal  title="k线数据持久化" visible={showStatus===3}
+                            okButtonProps={{htmlType: 'submit', form: 'editForm'}}
+                            onCancel={this.handleCancel}>
+                        <p>
+                            <Klinedatapersist name={this.state.currentSelectStockObj.name} stockId={this.state.currentSelectStockObj.id}/>
                         </p>
                     </Modal>
                 </Card>

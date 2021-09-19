@@ -2,6 +2,14 @@ import ajax from './ajax';
 
 const BASE = '';
 
+
+/**
+ * 获取每种类型的时间
+ */
+export const priceMonitor=()=>{
+    return ajax(BASE + "/eastmoneyMonitorPrice/priceMonitor", {}, 'GET');
+}
+
 /**
  * 获取所有的自选股
  * @returns {*}
@@ -15,7 +23,7 @@ export const findAllSelfStock=()=>{
  * @returns {*}
  */
 export const selfStock5MonthCheck=()=>{
-    return ajax(BASE + "/tradingsystem/selfStock5MonthCheck", {}, 'GET');
+    return ajax(BASE + "/quotationAnalysis/selfStock5MonthCheck", {}, 'GET');
 }
 
 /**
@@ -23,7 +31,11 @@ export const selfStock5MonthCheck=()=>{
  * @returns {*}
  */
 export const del_api_selfStock5MonthCheck_cache=()=>{
-    return ajax(BASE + "/tradingsystem/del/api_selfStock5MonthCheck_cache", {}, 'GET');
+    return ajax(BASE + "/quotationAnalysis/del/api_selfStock5MonthCheck_cache", {}, 'GET');
+}
+
+export const etf5Day=()=>{
+    return ajax(BASE + "/quotationAnalysis/etf5Day/check", {}, 'GET');
 }
 
 /**
@@ -33,9 +45,7 @@ export const del_api_selfStock5MonthCheck_cache=()=>{
 export const holdingStockCheck=()=>{
     return ajax(BASE + "/tradingsystem/holdingStock/check", {}, 'GET');
 }
-export const etf5Day=()=>{
-    return ajax(BASE + "/tradingsystem/etf5Day/check", {}, 'GET');
-}
+
 
 /**
  * 找到某只股票的所有交易日志
@@ -99,7 +109,16 @@ export const tStock=(stockId,stockName,addSubtractType,tradeNum,price)=>{
  * @returns {*}
  */
 export const positionBuildCheck_historyDataPrepare=(stockId)=>{
-    return ajax(BASE + "/tradingsystem/positionBuildCheck_historyDataPrepare/"+stockId, {}, 'GET');
+    return ajax(BASE + "/historyData/positionBuildCheck_historyDataPrepare/"+stockId, {}, 'GET');
+}
+
+/**
+ * 指定某只股票——进行历史数据持久化
+ * @param stockId
+ * @returns {*}
+ */
+export const appointStock_k_line_dataPersist=(stockId,monthNum,dayNum)=>{
+    return ajax(BASE + "/historyData/appointStock_k_line_dataPersist/"+stockId+"/"+monthNum+"/"+dayNum, {}, 'GET');
 }
 
 /**

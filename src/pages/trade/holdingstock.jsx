@@ -8,7 +8,9 @@ import Positionchange from "./positionchange";
 import Sell from "./sell";
 import Addposition from "./addposition";
 import Tradelog from "./tradelog";
-
+import ReactWebsocket from "./../../components/websocket/index";
+import{Alert}from'antd';
+import * as ReactDOM from "react-dom";
 class Holdingstock extends Component {
     state={
         stockArr:[],
@@ -16,8 +18,10 @@ class Holdingstock extends Component {
         // 0：默认不现实模态框，1：显示模态框
         currentSelectStockObj:{},
         //当前『表格中』选中的证券对象
-
     }
+
+
+
     /**
      * 打开仓位更改页面
      * @param stockObj
@@ -54,8 +58,6 @@ class Holdingstock extends Component {
         this.setState({showStatus:2});
     }
 
-
-
     handleCancel=()=>{
         this.setState({showStatus:0});
     }
@@ -67,8 +69,6 @@ class Holdingstock extends Component {
         Modal.destroyAll();
 
     }
-
-
 
     componentDidMount() {
         getAllHoldStock().then((response) => {
@@ -109,6 +109,12 @@ class Holdingstock extends Component {
                 ...this.getColumnSearchProps('id'),
             },
             {
+                title: '5日均价',
+                dataIndex: 'day_5_junjia',
+                key: 'day_5_junjia',
+                width: '6%',
+            },
+            {
                 title: '收盘价',
                 dataIndex: 'shoupanPrice',
                 key: 'shoupanPrice',
@@ -136,7 +142,7 @@ class Holdingstock extends Component {
                 title: '做T卖出数量',
                 dataIndex: 'tnum',
                 key: 'tnum',
-                width: '12%',
+                width: '11%',
             },
             {
                 title: '操作',
@@ -165,6 +171,14 @@ class Holdingstock extends Component {
                            dataSource={this.state.stockArr}
                            columns={columns_config}
                            pagination={{defaultPageSize: 10, showQuickJumper: true}}
+                           rowClassName={(record, index) => {
+                               // let className;
+                               console.log("五日均价为："+record.day_5_junjia);
+                               localStorage.getItem(record.stockId);
+
+                               // if (record === rowSelectedIndex) className = 'light';
+                               // return className;
+                           }}
                     />
                 </Card>
                 <Modal  title="卖出" visible={showStatus===2}

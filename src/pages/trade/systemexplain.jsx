@@ -13,15 +13,25 @@ class Systemexplain extends Component {
                 <br></br>
                 <a href={"brain://api.thebrain.com/bUflm3LL4kWN8ahyCYNU-g/j6r9mP5GaUCsplL1wkaZbQ/实现成本情绪耐心管理系统"}>2.交易系统『代码实现』</a>
                 <br></br>
+                {"高增长就可以给高估值。递增长就只能给低估值"}
+                {"3年10倍"}
+                {"每年如果增长100%，那么3年可以将200倍pe降到20倍（那么我们可以按每年50%的收益去买入，可以倒推出现在的股价）"}
+                {"每年如果增长10%，那么3年可以将20倍pe降到15倍/"}
                 <br></br>
                 待办事项：
-                1.五周均线引入
-                //    select min(highest_price),WEEK(date_shoupan) from (select * from t_history_day_price where date_shoupan like '2021%')t group by stock_name,WEEK(date_shoupan) having stock_name='三一重工' order by WEEK(date_shoupan) desc
+                1.市价：isOn5Day_movingAverage_byMarketPrice
+                2.k线数据持久化
+                3.机会标记
                 2.是否显示均线压力信息
+                5.建仓检查历史数据准备:positionBuildCheck_historyDataPrepare——持久化每周数据
+                6.建仓检查历史数据准备：的方法的意义
                 //3.任务三：日内——检查均线压力？
                 //if(false){
                 //List<Message> messages_minuteByMinute=minuteByMinuteChartCheck();
                 //messages_holdingCheck.addAll(messages_minuteByMinute);
+
+
+
             }
 
             </div>

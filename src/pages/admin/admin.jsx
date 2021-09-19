@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import memoryUtils from "../../utils/memoryUtils";
 import {Redirect,Route,Switch} from 'react-router-dom';
-import { Layout } from 'antd';
+import {Alert, Layout} from 'antd';
 import LeftNav from "../../components/left-nav/left-nav";
 import Header from "../../components/header/header";
 import Home from '../home/home';
@@ -15,10 +15,25 @@ import Tasktoday from "../task/tasktoday";
 import Selfstock from "../trade/selfstock";
 import Holdingstock from "../trade/holdingstock";
 import DoubleTrackAnalysis from "../trade/doubleTrackAnalysis";
+import ReactWebsocket from "../../components/websocket";
+import * as ReactDOM from "react-dom";
 
 const { Footer, Sider, Content } = Layout;
 
 class Admin extends Component {
+    onMessage=(msg)=>{
+        console.log(msg);
+        var divDom = document.createElement("div");
+        document.getElementById("container").appendChild(divDom);
+        ReactDOM.render(<Alert message={msg} type="success"/>, document.getElementById("container").lastChild);
+    }
+    onOpen=()=>{
+        console.log("开启连接");
+    }
+    onClose=()=>{
+        console.log("关闭连接");
+    }
+
     render() {
         const user = memoryUtils.user;
         //如果内存中没有存储user，说明当前没有登录，就要跳转到登录界面
@@ -29,6 +44,18 @@ class Admin extends Component {
                 <Layout style={{height:'100%'}}>
                     <Sider><LeftNav/></Sider>
                     <Layout>
+                        <div id="container"></div>
+                        <ReactWebsocket
+                            url='ws://127.0.0.1:6067/websocket/user/lpf'
+                            onMessage={this.onMessage} //接受信息的回调
+                            onOpen={this.onOpen} //websocket打开
+                            onClose={this.onClose} //websocket关闭
+                            reconnect={true}
+                            debug={true}
+                            ref={Websocket => {
+                                this.refWebSocket = Websocket;
+                            }}
+                        />
                         <Header>Header</Header>
                         <Content style={{margin:20,backgroundColor:'white'}}>
                             <Switch>

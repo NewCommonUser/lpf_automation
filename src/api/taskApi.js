@@ -9,6 +9,17 @@ export const findTimeGroupByType=()=>{
     return ajax(BASE + "/OmnifocusHandle/findTimeGroupByType", {}, 'GET');
 }
 
+
+/**
+ * 获取每种类型的时间
+ */
+export const findTotalTime=()=>{
+    return ajax(BASE + "/OmnifocusHandle/findTotalTime", {}, 'GET');
+}
+
+
+
+
 /**
  * 获取每个项目的时间
  * @returns {*}
