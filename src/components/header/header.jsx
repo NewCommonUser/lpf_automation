@@ -42,6 +42,8 @@ class Header extends Component {
             ,{'path':'/trade_system_explain','name':'系统说明'}
             ,{'path':'/trade_Selfstock','name':'自选建仓'}
             ,{'path':'/trade_Holdingstock','name':'持有标的'}
+            ,{'path':'/trade_wide_base_index','name':'宽基指数'}
+
 
 
             //脚本类************************************

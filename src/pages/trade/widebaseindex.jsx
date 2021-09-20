@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Card} from "antd";
 import ReactEcharts from "echarts-for-react";
-import {renderKLineCharts, renderPieCharts} from "../../utils/echartUtils";
-import {getWideBaseIndex_120day, selfStock5MonthCheck} from "../../api/tradeApi";
+import {renderKLineCharts} from "../../utils/echartUtils";
+import {getWideBaseIndex_200day} from "../../api/tradeApi";
 
 /**
  * https://echarts.apache.org/examples/zh/editor.html?c=candlestick-sh-2015
@@ -22,7 +22,7 @@ class Widebaseindex extends Component {
     }
 
     componentDidMount() {
-        getWideBaseIndex_120day().then((response) => {
+        getWideBaseIndex_200day().then((response) => {
             if (response.data.success === true) {
                 const mapData = response.data.result;
                 //设置日k线
@@ -46,7 +46,7 @@ class Widebaseindex extends Component {
         //1.获取数据源对象
         const {kline_arr_sh_50_day} = this.state;
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
-        return renderKLineCharts('上证50', kline_arr_sh_50_day);
+        return renderKLineCharts('上证50日K', kline_arr_sh_50_day);
     }
     /**
      * 返回k线配置对象：中证1000的k线数据——option
@@ -55,7 +55,7 @@ class Widebaseindex extends Component {
         //1.获取数据源对象
         const {kline_arr_zz_1000_day} = this.state;
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
-        return renderKLineCharts('中证1000', kline_arr_zz_1000_day);
+        return renderKLineCharts('中证1000日K', kline_arr_zz_1000_day);
     }
     /**
      * 返回k线配置对象：中证500的k线数据——option
@@ -64,7 +64,7 @@ class Widebaseindex extends Component {
         //1.获取数据源对象
         const {kline_arr_zz_500_day} = this.state;
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
-        return renderKLineCharts('中证500', kline_arr_zz_500_day);
+        return renderKLineCharts('中证500日K', kline_arr_zz_500_day);
     }
     /**
      * 返回k线配置对象：中证500的k线数据——option
@@ -73,7 +73,7 @@ class Widebaseindex extends Component {
         //1.获取数据源对象
         const {kline_arr_hs_300_day} = this.state;
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
-        return renderKLineCharts('沪深300', kline_arr_hs_300_day);
+        return renderKLineCharts('沪深300日K', kline_arr_hs_300_day);
     }
 
     /**
@@ -83,7 +83,7 @@ class Widebaseindex extends Component {
         //1.获取数据源对象
         const {kline_arr_sh_50_week} = this.state;
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
-        return renderKLineCharts('上证50', kline_arr_sh_50_week);
+        return renderKLineCharts('上证50周k', kline_arr_sh_50_week);
     }
     /**
      * 返回k线配置对象：中证1000的k线数据——option
@@ -92,7 +92,7 @@ class Widebaseindex extends Component {
         //1.获取数据源对象
         const {kline_arr_zz_1000_week} = this.state;
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
-        return renderKLineCharts('中证1000', kline_arr_zz_1000_week);
+        return renderKLineCharts('中证1000周k', kline_arr_zz_1000_week);
     }
     /**
      * 返回k线配置对象：中证500的k线数据——option
@@ -101,7 +101,7 @@ class Widebaseindex extends Component {
         //1.获取数据源对象
         const {kline_arr_zz_500_week} = this.state;
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
-        return renderKLineCharts('中证500', kline_arr_zz_500_week);
+        return renderKLineCharts('中证500周k', kline_arr_zz_500_week);
     }
     /**
      * 返回k线配置对象：中证500的k线数据——option
@@ -110,7 +110,7 @@ class Widebaseindex extends Component {
         //1.获取数据源对象
         const {kline_arr_hs_300_week} = this.state;
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
-        return renderKLineCharts('沪深300', kline_arr_hs_300_week);
+        return renderKLineCharts('沪深300周k', kline_arr_hs_300_week);
     }
 
     //2.渲染数据

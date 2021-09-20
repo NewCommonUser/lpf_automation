@@ -27,11 +27,19 @@ export const selfStock5MonthCheck=()=>{
 }
 
 /**
- * 获取宽基指数，最近120天的日线数据
+ * 获取宽基指数，最近200天的日线数据
  * @returns {*}
  */
-export const getWideBaseIndex_120day=()=>{
-    return ajax(BASE + "/quotationAnalysis/getWideBaseIndex_120day", {}, 'GET');
+export const getWideBaseIndex_200day=()=>{
+    return ajax(BASE + "/quotationAnalysis/getWideBaseIndex_200day", {}, 'GET');
+}
+
+/**
+ * 获取宽基指数，最近200天的日线数据
+ * @returns {*}
+ */
+export const getNarrowBaseIndex_200day=()=>{
+    return ajax(BASE + "/quotationAnalysis/getNarrowBaseIndex_200day", {}, 'GET');
 }
 
 

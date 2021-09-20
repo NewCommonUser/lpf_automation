@@ -165,11 +165,11 @@ export function renderKLineCharts(title, dataSource) {
         title: {
             text: title
         },
-        legend: {
-            // data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
-            data: ['MA5', 'MA20', 'MA60'],
-            inactiveColor: '#777',
-        },
+        // legend: {
+        ////   data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
+        //     data: ['MA5', 'MA20', 'MA60'],
+        //     inactiveColor: '#777',
+        // },
         tooltip: {
             trigger: 'axis',
             axisPointer: {

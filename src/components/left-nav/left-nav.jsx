@@ -72,6 +72,11 @@ class LeftNav extends Component {
                                 宽基指数
                             </Link>
                         </Menu.Item>
+                        <Menu.Item key="trade_narrow_base_index" icon={<LockOutlined />}>
+                            <Link to='/trade_narrow_base_index'>
+                                窄基指数
+                            </Link>
+                        </Menu.Item>
                         <Menu.Item key="trade_system_explain" icon={<LockOutlined />}>
                             <Link to='/trade_system_explain'>
                                 系统说明
