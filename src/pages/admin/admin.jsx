@@ -16,6 +16,7 @@ import Selfstock from "../trade/selfstock";
 import Holdingstock from "../trade/holdingstock";
 import DoubleTrackAnalysis from "../trade/doubleTrackAnalysis";
 import ReactWebsocket from "../../components/websocket";
+import WideBaseIndex from "../trade/widebaseindex";
 import * as ReactDOM from "react-dom";
 
 const { Footer, Sider, Content } = Layout;
@@ -65,7 +66,7 @@ class Admin extends Component {
                                 <Route path="/trade_Selfstock" component={Selfstock}/>
                                 <Route path="/trade_Holdingstock" component={Holdingstock}/>
                                 <Route path="/trade_double_track_analysis" component={DoubleTrackAnalysis}/>
-
+                                <Route path="/trade_wide_base_index" component={WideBaseIndex}/>
 
                                 {/*关于任务的路由组件*/}
                                 <Route path="/task_category" component={Category}/>

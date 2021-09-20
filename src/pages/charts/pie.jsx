@@ -58,7 +58,7 @@ class Pie extends Component {
     }
 
     /**
-     * 返回柱状图的(month)配置对象
+     * 返回饼图的配置对象
      * @returns {JSX.Element}
      */
     getOption_pieDataDivideByType = () => {

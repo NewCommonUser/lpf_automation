@@ -67,9 +67,9 @@ class LeftNav extends Component {
                                 双轨分析
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="trade_switch_config" icon={<LockOutlined />}>
-                            <Link to='/trade_switch_config'>
-                                开关配置
+                        <Menu.Item key="trade_wide_base_index" icon={<LockOutlined />}>
+                            <Link to='/trade_wide_base_index'>
+                                宽基指数
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="trade_system_explain" icon={<LockOutlined />}>
