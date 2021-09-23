@@ -34,8 +34,35 @@ export const getWideBaseIndex_200day=()=>{
     return ajax(BASE + "/quotationAnalysis/getWideBaseIndex_200day", {}, 'GET');
 }
 
+
 /**
- * 获取宽基指数，最近200天的日线数据
+ * 获取行业分析（金融地产），最近200天的日线数据
+ * @returns {*}
+ */
+export const getIndustry_consumption=()=>{
+    return ajax(BASE + "/quotationAnalysis/getIndustry_consumption", {}, 'GET');
+}
+
+
+/**
+ * 获取行业分析（金融地产），最近200天的日线数据
+ * @returns {*}
+ */
+export const getIndustry_jinrongdichan=()=>{
+    return ajax(BASE + "/quotationAnalysis/getIndustry_jinrongdichan", {}, 'GET');
+}
+
+
+/**
+ * 获取宽基指数，最近200周的日线数据
+ * @returns {*}
+ */
+export const getWideBaseIndex_200week=()=>{
+    return ajax(BASE + "/quotationAnalysis/getWideBaseIndex_200week", {}, 'GET');
+}
+
+/**
+ * 获取窄基指数，最近200天的日线数据
  * @returns {*}
  */
 export const getNarrowBaseIndex_200day=()=>{

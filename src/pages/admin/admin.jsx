@@ -14,11 +14,14 @@ import Systemexplain from "../trade/systemexplain";
 import Tasktoday from "../task/tasktoday";
 import Selfstock from "../trade/selfstock";
 import Holdingstock from "../trade/holdingstock";
-import DoubleTrackAnalysis from "../trade/doubleTrackAnalysis";
+import DoubleTrackAnalysis from "../trade/replayworkflow/doubleTrackAnalysis";
 import ReactWebsocket from "../../components/websocket";
-import WideBaseIndex from "../trade/widebaseindex";
+import WideBaseIndex from "../trade/replayworkflow/widebaseindexdaykline";
 import * as ReactDOM from "react-dom";
 import Narrowbaseindex from "../trade/narrowbaseindex";
+import Industryanalysis from "../trade/replayworkflow/industryanalysis";
+import Widebaseindexdaykline from "../trade/replayworkflow/widebaseindexdaykline";
+import Widebaseindexweekkline from "../trade/replayworkflow/widebaseindexweekkline";
 
 const { Footer, Sider, Content } = Layout;
 
@@ -62,12 +65,15 @@ class Admin extends Component {
                         <Content style={{margin:20,backgroundColor:'white'}}>
                             <Switch>
                                 <Route path="/home" component={Home}/>
+                                {/*关于复盘的路由组件*/}
+                                <Route path="/widebase_index_analysis" component={Industryanalysis}/>
                                 {/*关于交易的路由组件*/}
                                 <Route path="/trade_system_explain" component={Systemexplain}/>
                                 <Route path="/trade_Selfstock" component={Selfstock}/>
                                 <Route path="/trade_Holdingstock" component={Holdingstock}/>
                                 <Route path="/trade_double_track_analysis" component={DoubleTrackAnalysis}/>
-                                <Route path="/trade_wide_base_index" component={WideBaseIndex}/>
+                                <Route path="/trade_wide_base_index_day" component={Widebaseindexdaykline}/>
+                                <Route path="/trade_wide_base_index_week" component={Widebaseindexweekkline}/>
                                 <Route path="/trade_narrow_base_index" component={Narrowbaseindex}/>
 
                                 {/*关于任务的路由组件*/}

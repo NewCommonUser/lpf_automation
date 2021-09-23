@@ -26,6 +26,7 @@ import {
 import './left-nav.less';
 import Category from "../../pages/category/category";
 import Holdingstock from "../../pages/trade/holdingstock";
+import Industryanalysis from "../../pages/trade/replayworkflow/industryanalysis";
 
 const { SubMenu } = Menu;
 
@@ -60,6 +61,24 @@ class LeftNav extends Component {
                             首页
                         </Link>
                     </Menu.Item>
+                    <SubMenu key="replay"  icon={<StockOutlined />} title="复盘workflow">
+                        {/*icon={<SlidersOutlined />}*/}
+                        <Menu.Item key="trade_wide_base_index_day" icon={<LockOutlined />}>
+                            <Link to='/trade_wide_base_index_day'>
+                                宽基日线
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="trade_wide_base_index_week" icon={<LockOutlined />}>
+                            <Link to='/trade_wide_base_index_week'>
+                                宽基周线
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="widebase_index_analysis" icon={<PoweroffOutlined />}>
+                            <Link to='/widebase_index_analysis'>
+                                板块分析
+                            </Link>
+                        </Menu.Item>
+                    </SubMenu>
                     <SubMenu key="trade"  icon={<StockOutlined />} title="交易系统">
                         {/*icon={<SlidersOutlined />}*/}
                         <Menu.Item key="trade_double_track_analysis" icon={<UnorderedListOutlined />}>
@@ -67,11 +86,7 @@ class LeftNav extends Component {
                                 双轨分析
                             </Link>
                         </Menu.Item>
-                        <Menu.Item key="trade_wide_base_index" icon={<LockOutlined />}>
-                            <Link to='/trade_wide_base_index'>
-                                宽基指数
-                            </Link>
-                        </Menu.Item>
+
                         <Menu.Item key="trade_narrow_base_index" icon={<LockOutlined />}>
                             <Link to='/trade_narrow_base_index'>
                                 窄基指数

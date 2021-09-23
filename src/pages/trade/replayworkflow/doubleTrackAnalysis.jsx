@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Card, Image, Switch, Button, Modal} from "antd";
-import rationalThinking from '../../assets/images/rationalThinking.png';
-import etf from '../../assets/images/etf.png';
-import find from '../../assets/images/find.png';
+import rationalThinking from '../../../assets/images/rationalThinking.png';
+import etf from '../../../assets/images/etf.png';
+import find from '../../../assets/images/find.png';
 
-import Message from "../common/message";
-import Selfstock from "./selfstock";
-import LinkButton from "../../components/link-button/link-button";
-import {del_api_selfStock5MonthCheck_cache} from "../../api/tradeApi";
+import Message from "../../common/message";
+import Selfstock from "../selfstock";
+import LinkButton from "../../../components/link-button/link-button";
+import {del_api_selfStock5MonthCheck_cache} from "../../../api/tradeApi";
 
 class DoubleTrackAnalysis extends Component {
     state={
