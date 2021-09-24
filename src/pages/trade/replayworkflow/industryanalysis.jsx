@@ -4,14 +4,15 @@ import jinrong_dichan from "../../../assets/images/jinrong_dichan.png";
 import xiaofei from "../../../assets/images/xiaofei.png";
 import zhouqi from "../../../assets/images/zhouqi.png";
 import yiliaoyiyao1 from "../../../assets/images/yiliaoyiyao1.jpeg";
+import wenhuaxiaofei from "../../../assets/images/wenhuaxiaofei.png";
+
 
 
 
 import Modal from "antd/es/modal/Modal";
-import Widebaseindexdaykline from "./widebaseindexdaykline";
-import Widebaseindexweekkline from "./widebaseindexweekkline";
 import Financialproperty from "./narrow/financialproperty";
 import Consumption from "./narrow/consumption";
+import Cycleindustry from "./narrow/cycleindustry";
 
 class Industryanalysis extends Component {
 
@@ -26,9 +27,18 @@ class Industryanalysis extends Component {
     openFinancialproperty=()=>{
         this.setState({showStatus:1});
     }
-    openWeekKLine=()=>{
+    openConsumption=()=>{
+        this.setState({showStatus:2});
+    }
+
+    openWenhuaConsumption=()=>{
+        this.setState({showStatus:5});
+    }
+
+    openCycle=()=>{
         this.setState({showStatus:3});
     }
+
     handleCancel=()=>{
         this.setState({showStatus:0});
     }
@@ -37,66 +47,86 @@ class Industryanalysis extends Component {
         const {showStatus}=this.state;
 
         return (
-            <div style={{display: 'flex'}}>
-                <Card style={{height: '100%', width: '25%'}}>
-                    <div>
-                        <Image
-                            width={250}
-                            height={220}
-                            src={jinrong_dichan}
-                        />
-                    </div>
-                    <div>
-                        <Button type="primary" block onClick={this.openFinancialproperty}>
-                            金融地产
-                        </Button>
-                    </div>
-                </Card>
+            <div >
+                <div style={{display: 'flex'}}>
+                    <Card style={{height: '50%', width: '25%'}}>
+                        <div>
+                            <Image
+                                width={250}
+                                height={220}
+                                src={jinrong_dichan}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" block onClick={this.openFinancialproperty}>
+                                金融地产
+                            </Button>
+                        </div>
+                    </Card>
 
-                <Card style={{height: '100%', width: '25%'}}>
-                    <div>
-                        <Image
-                            width={250}
-                            height={220}
-                            src={xiaofei}
-                        />
-                    </div>
-                    <div>
-                        <Button type="primary" block onClick={this.openWeekKLine}>
-                            消费行业
-                        </Button>
-                    </div>
-                </Card>
+                    <Card style={{height: '50%', width: '25%'}}>
+                        <div>
+                            <Image
+                                width={250}
+                                height={220}
+                                src={xiaofei}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" block onClick={this.openConsumption}>
+                                消费行业
+                            </Button>
+                        </div>
+                    </Card>
 
-                <Card style={{height: '100%', width: '25%'}}>
-                    <div>
-                        <Image
-                            width={250}
-                            height={220}
-                            src={zhouqi}
-                        />
-                    </div>
-                    <div>
-                        <Button type="primary" block onClick={this.openWeekKLine}>
-                            周期行业
-                        </Button>
-                    </div>
-                </Card>
+                    <Card style={{height: '50%', width: '25%'}}>
+                        <div>
+                            <Image
+                                width={250}
+                                height={220}
+                                src={zhouqi}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" block onClick={this.openCycle}>
+                                周期行业
+                            </Button>
+                        </div>
+                    </Card>
 
-                <Card style={{height: '100%', width: '25%'}}>
-                    <div>
-                        <Image
-                            width={250}
-                            height={220}
-                            src={yiliaoyiyao1}
-                        />
-                    </div>
-                    <div>
-                        <Button type="primary" block onClick={this.openWeekKLine}>
-                            医疗医药
-                        </Button>
-                    </div>
-                </Card>
+                    <Card style={{height: '50%', width: '25%'}}>
+                        <div>
+                            <Image
+                                width={250}
+                                height={220}
+                                src={yiliaoyiyao1}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" block onClick={this.openWeekKLine}>
+                                医疗医药
+                            </Button>
+                        </div>
+                    </Card>
+                </div>
+                <div style={{display: 'flex'}}>
+                    <Card style={{height: '50%', width: '25%'}}>
+                        <div>
+                            <Image
+                                width={250}
+                                height={220}
+                                src={wenhuaxiaofei}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" block onClick={this.openWenhuaConsumption}>
+                                文化消费
+                            </Button>
+                        </div>
+                    </Card>
+
+                </div>
+
 
 
                 <Modal  title="金融地产"
@@ -110,7 +140,27 @@ class Industryanalysis extends Component {
                 </Modal>
 
                 <Modal  title="消费行业"
+                        visible={showStatus===2}
+                        destroyOnClose //设置关闭时销毁
+                        width={"2000px"}
+                        onCancel={this.handleCancel}>
+                    <p>
+                        <Consumption/>
+                    </p>
+                </Modal>
+
+                <Modal  title="周期行业"
                         visible={showStatus===3}
+                        destroyOnClose //设置关闭时销毁
+                        width={"2000px"}
+                        onCancel={this.handleCancel}>
+                    <p>
+                        <Cycleindustry/>
+                    </p>
+                </Modal>
+
+                <Modal  title="文化消费"
+                        visible={showStatus===5}
                         destroyOnClose //设置关闭时销毁
                         width={"2000px"}
                         onCancel={this.handleCancel}>

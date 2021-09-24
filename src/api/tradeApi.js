@@ -36,11 +36,19 @@ export const getWideBaseIndex_200day=()=>{
 
 
 /**
- * 获取行业分析（金融地产），最近200天的日线数据
+ * 获取行业分析（消费），最近200天的日线数据
  * @returns {*}
  */
 export const getIndustry_consumption=()=>{
     return ajax(BASE + "/quotationAnalysis/getIndustry_consumption", {}, 'GET');
+}
+
+/**
+ * 获取行业分析（周期），最近200天的日线数据
+ * @returns {*}
+ */
+export const getIndustry_cycle=()=>{
+    return ajax(BASE + "/quotationAnalysis/getIndustry_cycle", {}, 'GET');
 }
 
 
