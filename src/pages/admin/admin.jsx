@@ -18,7 +18,7 @@ import DoubleTrackAnalysis from "../trade/replayworkflow/doubleTrackAnalysis";
 import ReactWebsocket from "../../components/websocket";
 import WideBaseIndex from "../trade/replayworkflow/widebaseindexdaykline";
 import * as ReactDOM from "react-dom";
-import Narrowbaseindex from "../trade/narrowbaseindex";
+import Narrowbaseindex from "../trade/replayworkflow/narrowbaseindex";
 import Industryanalysis from "../trade/replayworkflow/industryanalysis";
 import Widebaseindexdaykline from "../trade/replayworkflow/widebaseindexdaykline";
 import Widebaseindexweekkline from "../trade/replayworkflow/widebaseindexweekkline";

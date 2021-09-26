@@ -19,15 +19,13 @@ class Systemexplain extends Component {
                 {"每年如果增长10%，那么3年可以将20倍pe降到15倍/"}
                 <br></br>
                 待办事项：
-                1.上证50、沪深300、中证500、中证1000的k线，react展现
-                2.板块强弱
-                3.
-                1.返回需要进行持久化的证券标的（可能是新加入自选表的，没有60周均线的持久化，只有runner持久化的数据）：
+                1.操作日志记录：操作理由、经验教训
+                1.选股系统1：暴跌站上五日均线
+                2.选股系统2：阴跌站上五月均线
+                2.返回需要进行持久化的证券标的（可能是新加入自选表的，没有60周均线的持久化，只有runner持久化的数据）：
                 {"select stock_id,stock_name,count(*) as logNum from t_history_day_price group by stock_name,stock_id having logNum<30"}
                 3.机会标记
                 2.是否显示均线压力信息
-                5.建仓检查历史数据准备:positionBuildCheck_historyDataPrepare——持久化每周数据
-                6.建仓检查历史数据准备：的方法的意义
                 //3.任务三：日内——检查均线压力？
                 //if(false){
                 //List<Message> messages_minuteByMinute=minuteByMinuteChartCheck();

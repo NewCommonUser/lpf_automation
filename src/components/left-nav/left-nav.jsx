@@ -53,7 +53,7 @@ class LeftNav extends Component {
                     defaultSelectedKeys={[path]}
                     mode="inline"
                     theme="dark"
-                    defaultOpenKeys={['trade','task','script']}
+                    defaultOpenKeys={['replay','trade','task','script']}
 
                 >
                     <Menu.Item key="home" icon={<HomeOutlined />}>
@@ -78,18 +78,17 @@ class LeftNav extends Component {
                                 板块分析
                             </Link>
                         </Menu.Item>
+                        <Menu.Item key="trade_narrow_base_index" icon={<LockOutlined />}>
+                            <Link to='/trade_narrow_base_index'>
+                                窄基指数
+                            </Link>
+                        </Menu.Item>
                     </SubMenu>
                     <SubMenu key="trade"  icon={<StockOutlined />} title="交易系统">
                         {/*icon={<SlidersOutlined />}*/}
                         <Menu.Item key="trade_double_track_analysis" icon={<UnorderedListOutlined />}>
                             <Link to='/trade_double_track_analysis'>
                                 双轨分析
-                            </Link>
-                        </Menu.Item>
-
-                        <Menu.Item key="trade_narrow_base_index" icon={<LockOutlined />}>
-                            <Link to='/trade_narrow_base_index'>
-                                窄基指数
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="trade_system_explain" icon={<LockOutlined />}>

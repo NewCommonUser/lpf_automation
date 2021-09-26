@@ -42,6 +42,13 @@ export const getWideBaseIndex_200day=()=>{
 export const getIndustry_consumption=()=>{
     return ajax(BASE + "/quotationAnalysis/getIndustry_consumption", {}, 'GET');
 }
+/**
+ * 获取行业分析（文化消费），最近200天的日线数据
+ * @returns {*}
+ */
+export const getIndustry_wenhua_consumption=()=>{
+    return ajax(BASE + "/quotationAnalysis/getIndustry_wenhua_consumption", {}, 'GET');
+}
 
 /**
  * 获取行业分析（周期），最近200天的日线数据

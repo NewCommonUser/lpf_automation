@@ -164,11 +164,12 @@ export function renderKLineCharts(title, dataSource) {
         title: {
             text: title
         },
-        // legend: {
-        ////   data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
+        legend: {
+            data: ['日K'],
+            ////   data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
         //     data: ['MA5', 'MA20', 'MA60'],
         //     inactiveColor: '#777',
-        // },
+        },
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -213,17 +214,17 @@ export function renderKLineCharts(title, dataSource) {
             type: 'inside'
         }],
         series: [
-            // {
-            //     type: 'candlestick',
-            //     name: '日K',
-            //     data: data,
-            //     itemStyle: {
-            //         color: '#FD1050',
-            //         color0: '#0CF49B',
-            //         borderColor: '#FD1050',
-            //         borderColor0: '#0CF49B'
-            //     }
-            // },
+            {
+                type: 'candlestick',
+                name: '日K',
+                data: data,
+                itemStyle: {
+                    color: '#F60804FF',
+                    borderColor: '#F60804FF',
+                    color0: '#56A870FF',
+                    borderColor0: '#56A870FF'
+                }
+            },
             {
                 name: 'MA5',
                 type: 'line',

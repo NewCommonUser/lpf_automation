@@ -5,6 +5,10 @@ import xiaofei from "../../../assets/images/xiaofei.png";
 import zhouqi from "../../../assets/images/zhouqi.png";
 import yiliaoyiyao1 from "../../../assets/images/yiliaoyiyao1.jpeg";
 import wenhuaxiaofei from "../../../assets/images/wenhuaxiaofei.png";
+import ziyuan from "../../../assets/images/ziyuan.png";
+import dazongshangpin from "../../../assets/images/dazongshangpin.png";
+
+
 
 
 
@@ -13,6 +17,7 @@ import Modal from "antd/es/modal/Modal";
 import Financialproperty from "./narrow/financialproperty";
 import Consumption from "./narrow/consumption";
 import Cycleindustry from "./narrow/cycleindustry";
+import Wenhuaconsumption from "./narrow/wenhuaconsumption";
 
 class Industryanalysis extends Component {
 
@@ -125,6 +130,36 @@ class Industryanalysis extends Component {
                         </div>
                     </Card>
 
+                    <Card style={{height: '50%', width: '25%'}}>
+                        <div>
+                            <Image
+                                width={250}
+                                height={220}
+                                src={ziyuan}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" block onClick={this.openZiyuan}>
+                                资源板块
+                            </Button>
+                        </div>
+                    </Card>
+
+                    <Card style={{height: '50%', width: '25%'}}>
+                        <div>
+                            <Image
+                                width={250}
+                                height={220}
+                                src={dazongshangpin}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" block onClick={this.openDazongshangpin}>
+                                大宗商品
+                            </Button>
+                        </div>
+                    </Card>
+
                 </div>
 
 
@@ -165,7 +200,7 @@ class Industryanalysis extends Component {
                         width={"2000px"}
                         onCancel={this.handleCancel}>
                     <p>
-                        <Consumption/>
+                        <Wenhuaconsumption/>
                     </p>
                 </Modal>
             </div>
