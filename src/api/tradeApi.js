@@ -27,6 +27,25 @@ export const selfStock5MonthCheck=()=>{
 }
 
 /**
+ * 站上五周均线的自选股
+ * @returns {*}
+ */
+export const selfStock5WeekCheck=()=>{
+    return ajax(BASE + "/quotationAnalysis/selfStock5WeekCheck", {}, 'GET');
+}
+
+
+/**
+ * 找到某只股票的200天k线
+ * @param stockId
+ * @returns {*}
+ */
+export const getKlineByStockId_200day=(stockId)=>{
+    return ajax(BASE + "/quotationAnalysis/getKlineByStockId_200day/"+stockId, {}, 'GET');
+}
+
+
+/**
  * 获取宽基指数，最近200天的日线数据
  * @returns {*}
  */
@@ -114,6 +133,10 @@ export const holdingStockCheck=()=>{
 export const findTradeLogByStockId=(stockId)=>{
     return ajax(BASE + "/tradingsystem/findTradeLogByStockId/"+stockId, {}, 'GET');
 }
+
+
+
+
 
 /**
  * 标记机会

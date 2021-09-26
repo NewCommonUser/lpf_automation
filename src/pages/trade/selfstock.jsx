@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card, Table, Input, Button, Space, Modal,Form} from "antd";
-import {buyStock, findAllSelfStock, selfStock5MonthCheck, signStock} from "../../api/tradeApi";
+import {buyStock, findAllSelfStock, selfStock5MonthCheck,selfStock5WeekCheck, signStock} from "../../api/tradeApi";
 import Highlighter from 'react-highlight-words';
 import { SearchOutlined } from '@ant-design/icons';
 import LinkButton from "../../components/link-button/link-button";
@@ -10,6 +10,7 @@ import Positionbuild from "./positionbuild";
 import WrappedPositionbuild from "./positionbuild";
 import Sell from "./sell";
 import Klinedatapersist from "./klinedatapersist";
+import Kline from "./kline";
 
 
 /**
@@ -30,7 +31,17 @@ class Selfstock extends Component {
     buy = ()=>{
     }
     componentDidMount() {
-        if(this.props.datasource==='selfStock5MonthCheck'){
+        if(this.props.datasource==='selfStock5WeekCheck'){
+            selfStock5WeekCheck().then((response) => {
+                if (response.data.success === true) {
+                    const seriesData = response.data.result.reverse();
+                    console.log(seriesData);
+                    //更新状态
+                    this.setState({loading:false});
+                    this.setState({stockArr: seriesData});
+                }
+            }).catch();
+        }else if(this.props.datasource==='selfStock5MonthCheck'){
             selfStock5MonthCheck().then((response) => {
                 if (response.data.success === true) {
                     const seriesData = response.data.result.reverse();
@@ -148,6 +159,12 @@ class Selfstock extends Component {
         this.setState({showStatus:3});
     }
 
+    openKlinePage=(stockObj)=>{
+        this.setState({currentSelectStockObj:stockObj});
+        this.setState({showStatus:4});
+    }
+
+
     sign=(stockObj)=>{
         signStock(stockObj.id).then((response) => {
             if (response.data.success === true) {
@@ -207,6 +224,7 @@ class Selfstock extends Component {
                             <LinkButton onClick={()=>{this.openPositionBuildingPage(stockObj);}}>建仓</LinkButton>
                             <LinkButton onClick={()=>{this.sign(stockObj);}}>机会标记</LinkButton>
                             <LinkButton onClick={()=>{this.k_line_dataPersist(stockObj);}}>k线数据持久化</LinkButton>
+                            <LinkButton onClick={()=>{this.openKlinePage(stockObj);}}>k线</LinkButton>
                         </span>
                     );
                 }
@@ -236,6 +254,14 @@ class Selfstock extends Component {
                             onCancel={this.handleCancel}>
                         <p>
                             <Klinedatapersist name={this.state.currentSelectStockObj.name} stockId={this.state.currentSelectStockObj.id}/>
+                        </p>
+                    </Modal>
+                    <Modal  title="历史行情" visible={showStatus===4}
+                            okButtonProps={{htmlType: 'submit', form: 'editForm'}}
+                            width={1000}
+                            onCancel={this.handleCancel}>
+                        <p>
+                            <Kline {...this.state.currentSelectStockObj}/>
                         </p>
                     </Modal>
                 </Card>

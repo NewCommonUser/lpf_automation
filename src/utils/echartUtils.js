@@ -165,7 +165,7 @@ export function renderKLineCharts(title, dataSource) {
             text: title
         },
         legend: {
-            data: ['日K'],
+            data: ['K线'],
             ////   data: ['日K', 'MA5', 'MA10', 'MA20', 'MA30'],
         //     data: ['MA5', 'MA20', 'MA60'],
         //     inactiveColor: '#777',
@@ -216,7 +216,7 @@ export function renderKLineCharts(title, dataSource) {
         series: [
             {
                 type: 'candlestick',
-                name: '日K',
+                name: 'K线',
                 data: data,
                 itemStyle: {
                     color: '#F60804FF',

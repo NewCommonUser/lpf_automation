@@ -42,7 +42,13 @@ class Header extends Component {
             ,{'path':'/trade_system_explain','name':'系统说明'}
             ,{'path':'/trade_Selfstock','name':'自选建仓'}
             ,{'path':'/trade_Holdingstock','name':'持有标的'}
-            ,{'path':'/trade_wide_base_index','name':'宽基指数'}
+            // ,{'path':'/trade_wide_base_index','name':'宽基指数'}
+            ,{'path':'/trade_wide_base_index_day','name':'宽基日线'}
+            ,{'path':'/trade_wide_base_index_week','name':'宽基周线'}
+            ,{'path':'/widebase_index_analysis','name':'板块分析'}
+            ,{'path':'/trade_narrow_base_index','name':'窄基指数'}
+
+
 
 
 

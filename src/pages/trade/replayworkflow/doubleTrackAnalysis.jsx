@@ -33,6 +33,10 @@ class DoubleTrackAnalysis extends Component {
     openSelfStock5Month=()=>{
         this.setState({showStatus:3});
     }
+    openSelfStock5Week=()=>{
+        this.setState({showStatus:4});
+    }
+
     handleCancel=()=>{
         this.setState({showStatus:0});
     }
@@ -79,7 +83,22 @@ class DoubleTrackAnalysis extends Component {
                         </div>
                         <div>
                             <Button type="primary" block onClick={this.openSelfStock5Month}>
-                                自选股机会（月线回踩、突破）
+                                阴跌的月线机会
+                            </Button>
+                        </div>
+                    </Card>
+
+                    <Card style={{height: '100%', width: '25%'}}>
+                        <div>
+                            <Image
+                                width={250}
+                                height={220}
+                                src={find}
+                            />
+                        </div>
+                        <div>
+                            <Button type="primary" block onClick={this.openSelfStock5Week}>
+                                暴跌的周线机会
                             </Button>
                         </div>
                     </Card>
@@ -107,7 +126,7 @@ class DoubleTrackAnalysis extends Component {
                         </p>
                     </Modal>
 
-                    <Modal  title="自选股机会（月线回踩、突破）"
+                    <Modal  title="阴跌的月线机会"
                             visible={showStatus===3}
                             destroyOnClose //设置关闭时销毁
                             width={1000}
@@ -117,6 +136,18 @@ class DoubleTrackAnalysis extends Component {
                             <Selfstock datasource={"selfStock5MonthCheck"}/>
                         </p>
                         <LinkButton onClick={this.clear_selfStock5MonthCheck} style={{"margin-left":"825px"}}>清空缓存</LinkButton>
+                    </Modal>
+
+                    <Modal  title="暴跌的周线机会"
+                            visible={showStatus===4}
+                            destroyOnClose //设置关闭时销毁
+                            width={1000}
+                        // okButtonProps={{htmlType: 'submit', form: 'editForm'}}
+                            onCancel={this.handleCancel}>
+                        <p>
+                            <Selfstock datasource={"selfStock5WeekCheck"}/>
+                        </p>
+                        {/*<LinkButton onClick={this.clear_selfStock5MonthCheck} style={{"margin-left":"825px"}}>清空缓存</LinkButton>*/}
                     </Modal>
 
                 </div>
