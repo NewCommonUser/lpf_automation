@@ -131,7 +131,19 @@ class LeftNav extends Component {
                             </Link>
                         </Menu.Item>
                     </SubMenu>
-
+                    <SubMenu key="introspection"  icon={<StockOutlined />} title="自省系统">
+                        {/*icon={<SlidersOutlined />}*/}
+                        <Menu.Item key="trade_reason" icon={<PoweroffOutlined />}>
+                            <Link to='/trade_reason'>
+                                操作原因
+                            </Link>
+                        </Menu.Item>
+                        <Menu.Item key="trade_lesson" icon={<CodeOutlined />}>
+                            <Link to='/trade_lesson'>
+                                经验教训
+                            </Link>
+                        </Menu.Item>
+                    </SubMenu>
                     <SubMenu key="script"  icon={<StockOutlined />} title="我的脚本">
                         {/*icon={<SlidersOutlined />}*/}
                         <Menu.Item key="script_service_switch" icon={<PoweroffOutlined />}>

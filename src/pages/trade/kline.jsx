@@ -12,8 +12,8 @@ class Kline extends Component {
     }
 
     componentDidMount() {
-        const {id} = this.props;
-        getKlineByStockId_200day(id).then((response) => {
+        const {stockId} = this.props;
+        getKlineByStockId_200day(stockId).then((response) => {
             if (response.data.success === true) {
                 const mapData = response.data.result;
                 //设置日k线
@@ -35,7 +35,6 @@ class Kline extends Component {
     }
 
     getOption_kline_week=()=>{
-        console.log(4444);
         const {name} = this.props;
         //1.获取数据源对象
         const {kline_arr_week} = this.state;

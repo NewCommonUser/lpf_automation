@@ -18,6 +18,8 @@ import Financialproperty from "./narrow/financialproperty";
 import Consumption from "./narrow/consumption";
 import Cycleindustry from "./narrow/cycleindustry";
 import Wenhuaconsumption from "./narrow/wenhuaconsumption";
+import Yiliaoyiyao from "./narrow/yiliaoyiyao";
+import Ziyuan from "./narrow/ziyuan";
 
 class Industryanalysis extends Component {
 
@@ -36,13 +38,26 @@ class Industryanalysis extends Component {
         this.setState({showStatus:2});
     }
 
+    openCycle=()=>{
+        this.setState({showStatus:3});
+    }
+
+    openyiliaoyiyao=()=>{
+        this.setState({showStatus:4});
+    }
     openWenhuaConsumption=()=>{
         this.setState({showStatus:5});
     }
 
-    openCycle=()=>{
-        this.setState({showStatus:3});
+    openZiyuan=()=>{
+        this.setState({showStatus:6});
     }
+
+
+
+
+
+
 
     handleCancel=()=>{
         this.setState({showStatus:0});
@@ -108,7 +123,7 @@ class Industryanalysis extends Component {
                             />
                         </div>
                         <div>
-                            <Button type="primary" block onClick={this.openWeekKLine}>
+                            <Button type="primary" block onClick={this.openyiliaoyiyao}>
                                 医疗医药
                             </Button>
                         </div>
@@ -194,6 +209,16 @@ class Industryanalysis extends Component {
                     </p>
                 </Modal>
 
+                <Modal  title="医药医疗"
+                        visible={showStatus===4}
+                        destroyOnClose //设置关闭时销毁
+                        width={"2000px"}
+                        onCancel={this.handleCancel}>
+                    <p>
+                        <Yiliaoyiyao/>
+                    </p>
+                </Modal>
+
                 <Modal  title="文化消费"
                         visible={showStatus===5}
                         destroyOnClose //设置关闭时销毁
@@ -201,6 +226,16 @@ class Industryanalysis extends Component {
                         onCancel={this.handleCancel}>
                     <p>
                         <Wenhuaconsumption/>
+                    </p>
+                </Modal>
+
+                <Modal  title="资源行业"
+                        visible={showStatus===6}
+                        destroyOnClose //设置关闭时销毁
+                        width={"2000px"}
+                        onCancel={this.handleCancel}>
+                    <p>
+                        <Ziyuan/>
                     </p>
                 </Modal>
             </div>

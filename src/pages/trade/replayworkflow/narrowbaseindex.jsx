@@ -64,12 +64,12 @@ class Narrowbaseindex extends Component {
                         <ReactEcharts option={this.getOption_kline("512660")}></ReactEcharts>
                     </Card>
 
-                    <Card style={{height: '100%', width: '25%'}}>
-                        <ReactEcharts option={this.getOption_kline("159828")}></ReactEcharts>
-                    </Card>
-                    <Card style={{height: '100%', width: '25%'}}>
-                        <ReactEcharts option={this.getOption_kline("159929")}></ReactEcharts>
-                    </Card>
+                    {/*<Card style={{height: '100%', width: '25%'}}>*/}
+                    {/*    <ReactEcharts option={this.getOption_kline("159828")}></ReactEcharts>*/}
+                    {/*</Card>*/}
+                    {/*<Card style={{height: '100%', width: '25%'}}>*/}
+                    {/*    <ReactEcharts option={this.getOption_kline("159929")}></ReactEcharts>*/}
+                    {/*</Card>*/}
                     <Card style={{height: '100%', width: '25%'}}>
                         <ReactEcharts option={this.getOption_kline("512480")}></ReactEcharts>
                     </Card>
@@ -93,9 +93,9 @@ class Narrowbaseindex extends Component {
                     {/*<Card style={{height: '100%', width: '25%'}}>*/}
                     {/*    <ReactEcharts option={this.getOption_kline("159766")}></ReactEcharts>*/}
                     {/*</Card>*/}
-                    <Card style={{height: '100%', width: '25%'}}>
-                        <ReactEcharts option={this.getOption_kline("159930")}></ReactEcharts>
-                    </Card>
+                    {/*<Card style={{height: '100%', width: '25%'}}>*/}
+                    {/*    <ReactEcharts option={this.getOption_kline("159930")}></ReactEcharts>*/}
+                    {/*</Card>*/}
                     <Card style={{height: '100%', width: '25%'}}>
                         <ReactEcharts option={this.getOption_kline("516910")}></ReactEcharts>
                     </Card>

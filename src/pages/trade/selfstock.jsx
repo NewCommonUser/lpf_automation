@@ -259,9 +259,10 @@ class Selfstock extends Component {
                     <Modal  title="历史行情" visible={showStatus===4}
                             okButtonProps={{htmlType: 'submit', form: 'editForm'}}
                             width={1000}
+                            destroyOnClose //设置关闭时销毁
                             onCancel={this.handleCancel}>
                         <p>
-                            <Kline {...this.state.currentSelectStockObj}/>
+                            <Kline name={this.state.currentSelectStockObj.name} stockId={this.state.currentSelectStockObj.id}/>
                         </p>
                     </Modal>
                 </Card>
