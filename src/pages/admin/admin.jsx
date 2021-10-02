@@ -16,12 +16,13 @@ import Selfstock from "../trade/selfstock";
 import Holdingstock from "../trade/holdingstock";
 import DoubleTrackAnalysis from "../trade/replayworkflow/doubleTrackAnalysis";
 import ReactWebsocket from "../../components/websocket";
-import WideBaseIndex from "../trade/replayworkflow/widebaseindexdaykline";
+import Tradereason from "../trade/introspection/tradereason";
 import * as ReactDOM from "react-dom";
 import Narrowbaseindex from "../trade/replayworkflow/narrowbaseindex";
 import Industryanalysis from "../trade/replayworkflow/industryanalysis";
 import Widebaseindexdaykline from "../trade/replayworkflow/widebaseindexdaykline";
 import Widebaseindexweekkline from "../trade/replayworkflow/widebaseindexweekkline";
+import Article from "../trade/introspection/article";
 
 const { Footer, Sider, Content } = Layout;
 
@@ -82,6 +83,8 @@ class Admin extends Component {
                                 <Route path="/pie" component={Pie}/>
                                 <Route path="/line" component={Line}/>
                                 <Route path="/bar" component={Bar}/>
+                                {/*关于自省系统的路由组件*/}
+                                <Route path="/trade_reason" component={Article}/>
                                 {/*关于脚本的路由组件*/}
                                 <Route path="/script_service_switch" component={Serviceswitch}/>
                                 {/*默认显示的路由组件*/}

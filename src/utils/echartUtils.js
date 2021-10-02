@@ -141,7 +141,7 @@ export function renderKLineCharts(title, dataSource) {
     });
     //提取：日k数据
     var data = rawData.map(function (item) {
-        return [+item["openPrice"], +item["closePrice"], +item["highestPrice"], +item["minimumPrice"]];
+        return [+item["openPrice"], +item["closePrice"], +item["minimumPrice"], +item["highestPrice"]];
     });
     //2.计算均线数据
     function calculateMA(dayCount, data) {

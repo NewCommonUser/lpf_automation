@@ -4,6 +4,22 @@ const BASE = '';
 
 
 /**
+ * 获取所有的文章
+ * @returns {*}
+ */
+export const findAllArticle=()=>{
+    return ajax(BASE + "/article/findAllArticle", {}, 'GET');
+}
+
+/**
+ * 保存文章
+ * @returns {*}
+ */
+export const saveArticle=(articleObj)=>{
+    return ajax(BASE + "/article/saveArticle", articleObj, 'POST');
+}
+
+/**
  * 获取每种类型的时间
  */
 export const priceMonitor=()=>{
