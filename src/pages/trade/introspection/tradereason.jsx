@@ -5,6 +5,10 @@ import {saveArticle, tStock} from "../../../api/tradeApi";
 import PubSub from "pubsub-js";
 const Item = Form.Item;
 
+/**
+ * tinymce:图片插件的使用
+ * http://tinymce.ax-z.cn/general/upload-images.php
+ */
 
 class Tradereason extends React.Component {
     state={
@@ -51,8 +55,6 @@ class Tradereason extends React.Component {
 
     render() {
         const {content} = this.props;
-        const {title} = this.props;
-        console.log(this.props);
 
         return (
             <div >
@@ -69,11 +71,11 @@ class Tradereason extends React.Component {
                         height: 500,
                         menubar: false,
                         plugins: [
-                            'advlist autolink lists link image charmap print preview anchor',
+                            'image advlist autolink lists link image charmap print preview anchor',
                             'searchreplace visualblocks code fullscreen',
                             'insertdatetime media table paste code help wordcount'
                         ],
-                        toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+                        toolbar: 'image | undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
                     }}
                     onEditorChange={this.handleEditorChange}
                 />
