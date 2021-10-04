@@ -23,6 +23,11 @@ class Article extends Component {
                 //去除类型列表（可能是一级、可能时子级）
                 const list = response.data.result;
                 console.log(list);
+                list.map((value, index) => {
+                    value.addTime = new Date(value.addTime).Format("yyyy-MM-dd hh:mm:ss");
+                    return value;
+                });
+                console.log(list);
                 //更新状态
                 this.setState({articleList:list});
             }
@@ -39,6 +44,11 @@ class Article extends Component {
                 if (response.data.success === true) {
                     //去除类型列表（可能是一级、可能时子级）
                     const list = response.data.result;
+                    console.log(list);
+                    list.map((value, index) => {
+                        value.addTime = new Date(value.addTime).Format("yyyy-MM-dd hh:mm:ss");
+                        return value;
+                    });
                     console.log(list);
                     //更新状态
                     this.setState({articleList:list});
@@ -85,13 +95,13 @@ class Article extends Component {
                 title: '标题',
                 dataIndex: 'title',
                 key: 'title',
-                width: '30%',
+                width: '20%',
             },
             {
                 title: '时间',
                 dataIndex: 'addTime',
                 key: 'addTime',
-                width: '10%',
+                width: '20%',
 
             },
             {
