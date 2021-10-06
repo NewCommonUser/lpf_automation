@@ -11,6 +11,7 @@ import Tradelog from "./tradelog";
 import ReactWebsocket from "./../../components/websocket/index";
 import{Alert}from'antd';
 import * as ReactDOM from "react-dom";
+import Kline from "./kline";
 class Holdingstock extends Component {
     state={
         stockArr:[],
@@ -48,6 +49,17 @@ class Holdingstock extends Component {
         this.setState({currentSelectStockObj:stockObj});
         this.setState({showStatus:4});
     }
+
+    /**
+     * 打开k线页面
+     * @param stockObj
+     */
+    openKlinePage=(stockObj)=>{
+        this.setState({currentSelectStockObj:stockObj});
+        this.setState({showStatus:5});
+    }
+
+
     /**
      * 打开买卖页面
      * @param stockObj
@@ -155,7 +167,7 @@ class Holdingstock extends Component {
                             <LinkButton onClick={()=>{this.openPositionChangePage(stockObj);}}>做T</LinkButton>
                             <LinkButton onClick={()=>{this.openSellPage(stockObj);}}>卖出</LinkButton>
                             <LinkButton onClick={()=>{this.openTradeLogPage(stockObj);}}>交易记录</LinkButton>
-
+                            <LinkButton onClick={()=>{this.openKlinePage(stockObj);}}>k线</LinkButton>
                         </span>
                     );
                 }
@@ -214,6 +226,17 @@ class Holdingstock extends Component {
 
                     </p>
                 </Modal>
+
+                <Modal  title="历史行情" visible={showStatus===5}
+                        okButtonProps={{htmlType: 'submit', form: 'editForm'}}
+                        width={1000}
+                        destroyOnClose //设置关闭时销毁
+                        onCancel={this.handleCancel}>
+                    <p>
+                        <Kline name={this.state.currentSelectStockObj.stockName} stockId={this.state.currentSelectStockObj.stockId}/>
+                    </p>
+                </Modal>
+
             </div>
         );
     }

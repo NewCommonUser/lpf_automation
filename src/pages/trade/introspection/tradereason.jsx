@@ -167,11 +167,10 @@ class Tradereason extends React.Component {
                         height: 500,
                         menubar: false,
                         plugins: [
-                            'image advlist autolink lists link image charmap print preview anchor',
-                            'searchreplace visualblocks code fullscreen',
+                            'image advlist template autolink lists link image charmap print  anchor searchreplace visualblocks code fullscreen',
                             'insertdatetime media table paste code help wordcount'
                         ],
-                        toolbar: 'image | undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help'
+                        toolbar: 'image |template | insertdatetime  | fullscreen  | undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | help',
                     }}
                     onEditorChange={this.handleEditorChange}
                 />
