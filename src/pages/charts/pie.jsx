@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Card, Table} from "antd";
 import ReactEcharts from "echarts-for-react";
-import {generateChartConfig, renderPieCharts} from "../../utils/echartUtils";
+import { renderPieCharts} from "../../utils/echartUtils";
 import {findTimeGroupByProject, findTimeGroupByType} from "../../api/taskApi";
 import './pie.less';
 

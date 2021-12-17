@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {Card, Form, Modal, Table} from "antd";
 import {findAllArticle} from "../../../api/tradeApi";
 import LinkButton from "../../../components/link-button/link-button";
-import Sell from "../sell";
-import Positionchange from "../positionchange";
+// import Sell from "../sell";
+// import Positionchange from "../positionchange";
 import Tradereason from "./tradereason";
 import PubSub from "pubsub-js";
 
@@ -130,7 +130,7 @@ class Article extends Component {
                                rowkey={"id"}
                                dataSource={articleList}
                                columns={columns_month}
-                               pagination={{defaultPageSize: 3, showQuickJumper: true}}
+                               pagination={{defaultPageSize: 10, showQuickJumper: true}}
                         />
                     </Card>
 

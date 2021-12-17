@@ -1,16 +1,14 @@
 import React, {Component} from 'react';
 import {Card, Table, Input, Button, Space, Modal,Form} from "antd";
 import LinkButton from "../../components/link-button/link-button";
-import {addPosition, findAllSelfStock, getAllHoldStock} from "../../api/tradeApi";
+import { getAllHoldStock} from "../../api/tradeApi";
 import {SearchOutlined} from "@ant-design/icons";
 import Highlighter from "react-highlight-words";
 import Positionchange from "./positionchange";
 import Sell from "./sell";
 import Addposition from "./addposition";
 import Tradelog from "./tradelog";
-import ReactWebsocket from "./../../components/websocket/index";
-import{Alert}from'antd';
-import * as ReactDOM from "react-dom";
+
 import Kline from "./kline";
 class Holdingstock extends Component {
     state={

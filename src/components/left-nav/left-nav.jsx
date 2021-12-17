@@ -144,11 +144,11 @@ class LeftNav extends Component {
                             </Link>
                         </Menu.Item>
                     </SubMenu>
-                    <SubMenu key="script"  icon={<StockOutlined />} title="我的脚本">
+                    <SubMenu key="script"  icon={<StockOutlined />} title="元数据">
                         {/*icon={<SlidersOutlined />}*/}
                         <Menu.Item key="script_service_switch" icon={<PoweroffOutlined />}>
                             <Link to='/script_service_switch'>
-                                服务开关
+                                思维导图
                             </Link>
                         </Menu.Item>
                         <Menu.Item key="script_2" icon={<CodeOutlined />}>

@@ -52,7 +52,7 @@ class Admin extends Component {
                     <Layout>
                         <div id="container"></div>
                         <ReactWebsocket
-                            url='ws://127.0.0.1:6067/websocket/user/lpf'
+                            url='ws://127.0.0.1:8080/websocket/user/lpf'
                             onMessage={this.onMessage} //接受信息的回调
                             onOpen={this.onOpen} //websocket打开
                             onClose={this.onClose} //websocket关闭

@@ -131,7 +131,9 @@ class Tradereason extends React.Component {
                                 return option && option.props && option.props.children && option.props.children.indexOf(input) >= 0
                             }}
                         >
+                            <Option value={""}>{""}</Option>
                             {
+
                                 holdStockList.map((item, index) => (
                                     <Option key={index} value={item.stockId}>{item.stockName}</Option>
                                 ))
@@ -152,6 +154,7 @@ class Tradereason extends React.Component {
                                 option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                             }
                         >
+                            <Option value={""}>{""}</Option>
                             {
                                 tradeLogList.map((item, index) => (
                                     <Option key={index} value={item.id}>{item.tradeTime}</Option>

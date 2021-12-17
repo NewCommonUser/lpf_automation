@@ -53,7 +53,7 @@ class Header extends Component {
 
 
             //脚本类************************************
-            ,{'path':'/script_service_switch','name':'服务开关'}
+            ,{'path':'/script_service_switch','name':'思维导图'}
             // ,{'path':'/trade_switch_config','name':'开关配置'}
 
         ];

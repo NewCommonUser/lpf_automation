@@ -1,6 +1,6 @@
 import ajax from './ajax';
 
-const BASE = '';
+const BASE = '/api';
 
 
 /**
