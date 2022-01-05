@@ -146,6 +146,13 @@ export const getNarrowBaseIndex_200day=()=>{
 export const del_api_selfStock5MonthCheck_cache=()=>{
     return ajax(BASE + "/quotationAnalysis/del/api_selfStock5MonthCheck_cache", {}, 'GET');
 }
+/**
+ * 清空接口selfStock5MonthCheck缓存
+ * @returns {*}
+ */
+export const del_api_selfStock5WeekCheck_cache=()=>{
+    return ajax(BASE + "/quotationAnalysis/del/api_selfStock5WeekCheck_cache", {}, 'GET');
+}
 
 export const etf5Day=()=>{
     return ajax(BASE + "/quotationAnalysis/etf5Day/check", {}, 'GET');

@@ -7,7 +7,7 @@ import find from '../../../assets/images/find.png';
 import Message from "../../common/message";
 import Selfstock from "../selfstock";
 import LinkButton from "../../../components/link-button/link-button";
-import {del_api_selfStock5MonthCheck_cache} from "../../../api/tradeApi";
+import {del_api_selfStock5MonthCheck_cache, del_api_selfStock5WeekCheck_cache} from "../../../api/tradeApi";
 
 class DoubleTrackAnalysis extends Component {
     state={
@@ -24,6 +24,18 @@ class DoubleTrackAnalysis extends Component {
             }
         ).catch();
     }
+    clear_selfStock5WeekCheck=()=>{
+        del_api_selfStock5WeekCheck_cache().then(
+            (response)=>{
+                if (response.data.success === true) {
+                    const msg = response.data.msg;
+                    alert(msg);
+                    this.setState({showStatus:0});
+                }
+            }
+        ).catch();
+    }
+
     openRationalAnalysisMessage=()=>{
         this.setState({showStatus:1});
     }
@@ -147,7 +159,7 @@ class DoubleTrackAnalysis extends Component {
                         <p>
                             <Selfstock datasource={"selfStock5WeekCheck"}/>
                         </p>
-                        {/*<LinkButton onClick={this.clear_selfStock5MonthCheck} style={{"margin-left":"825px"}}>清空缓存</LinkButton>*/}
+                        <LinkButton onClick={this.clear_selfStock5WeekCheck} style={{"margin-left":"825px"}}>清空缓存</LinkButton>
                     </Modal>
 
                 </div>
