@@ -9,6 +9,7 @@ class Kline extends Component {
     state={
         kline_arr_day:[],//日线
         kline_arr_week:[],//周线
+        kline_arr_month:[],//月线
     }
 
     componentDidMount() {
@@ -19,6 +20,7 @@ class Kline extends Component {
                 //设置日k线
                 this.setState({kline_arr_day:mapData.day_arr});
                 this.setState({kline_arr_week:mapData.week_arr});
+                this.setState({kline_arr_month:mapData.month_arr});
             }
         }).catch();
     }
@@ -41,6 +43,14 @@ class Kline extends Component {
         //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
         return renderKLineCharts(name+'周K', kline_arr_week);
     }
+    getOption_kline_month=()=>{
+        const {name} = this.props;
+        //1.获取数据源对象
+        const {kline_arr_month} = this.state;
+        //2.根据后台返回的『数据源对象』——映射成『echart』配置对象
+        return renderKLineCharts(name+'月K', kline_arr_month);
+    }
+
 
     //2.渲染数据
     render() {
@@ -52,6 +62,11 @@ class Kline extends Component {
                     </Card>
                     <Card style={{height: '100%', width: '50%'}}>
                         <ReactEcharts option={this.getOption_kline_week()}></ReactEcharts>
+                    </Card>
+                </div>
+                <div style={{display: 'flex'}}>
+                    <Card style={{height: '100%', width: '50%'}}>
+                        <ReactEcharts option={this.getOption_kline_month()}></ReactEcharts>
                     </Card>
                 </div>
             </div>

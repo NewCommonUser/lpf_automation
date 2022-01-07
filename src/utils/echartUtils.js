@@ -137,7 +137,7 @@ export function renderKLineCharts(title, dataSource) {
     //1.提取数据
     //提取：日期数据
     var dates = rawData.map(function (item) {
-        return item["date_shupan"]||item["dateEnd"];
+        return item["date_shupan"]||item["dateEnd"]||item["month_shupan"];
     });
     //提取：日k数据
     var data = rawData.map(function (item) {
