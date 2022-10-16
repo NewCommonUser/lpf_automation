@@ -127,7 +127,7 @@ class LeftNav extends Component {
                         </Menu.Item>
                         <Menu.Item key="task_today" icon={<PieChartOutlined />}>
                             <Link to='/task_today'>
-                                当日任务
+                                成绩走势
                             </Link>
                         </Menu.Item>
                     </SubMenu>

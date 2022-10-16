@@ -16,7 +16,7 @@ class App extends Component {
             <BrowserRouter>
                 <Switch>
                     {/* Switch:匹配第一个 */}
-                    <Route component={Login} path='/login'></Route>
+                    {/*<Route component={Login} path='/login'></Route>*/}
                     <Route component={Admin} path='/'></Route>
                 </Switch>
             </BrowserRouter>

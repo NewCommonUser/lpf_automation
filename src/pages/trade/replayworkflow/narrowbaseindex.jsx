@@ -17,7 +17,6 @@ class Narrowbaseindex extends Component {
         //1.获取数据源对象
         const {data} = this.state;
         if(JSON.stringify(data) != "{}"){
-            console.log(11111);
             console.log(stockId);
             if(data[stockId]===undefined){return {};}
             let stockName = data[stockId][0]["stockName"];

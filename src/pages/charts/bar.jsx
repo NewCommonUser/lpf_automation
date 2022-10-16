@@ -211,26 +211,6 @@ class Bar extends Component {
                     </Card>
                 </div>
 
-                {/*<div style={{display: 'flex'}}>*/}
-                {/*    <Card style={{height: '100%', width: '50%'}}>*/}
-                {/*        <Table bordered*/}
-                {/*            // loading={this.loading}*/}
-                {/*               rowkey={"id"}*/}
-                {/*               dataSource={barData_day_orderDesc}*/}
-                {/*               columns={columns_day}*/}
-                {/*               pagination={{defaultPageSize: 5, showQuickJumper: true}}*/}
-                {/*        />*/}
-                {/*    </Card>*/}
-                {/*    <Card style={{height: '100%', width: '50%'}}>*/}
-                {/*        <Table bordered*/}
-                {/*            // loading={this.loading}*/}
-                {/*               rowkey={"id"}*/}
-                {/*               dataSource={barData_month_orderDesc}*/}
-                {/*               columns={columns_month}*/}
-                {/*               pagination={{defaultPageSize: 5, showQuickJumper: true}}*/}
-                {/*        />*/}
-                {/*    </Card>*/}
-                {/*</div>*/}
 
                 <div style={{display: 'flex'}}>
                     <Card style={{height: '100%', width: '50%'}}>

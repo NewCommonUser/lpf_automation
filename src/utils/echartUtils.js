@@ -14,6 +14,8 @@
 export function generateChartConfig(title, dataSource, legendDataKeyOfDataSource
     , seriesDataKeyOfDataSource, xAxisKeyOfSeriesData
     , yValueKeyOfSeriesData, chartsType, isDisplayLegendData) {
+    console.log(2222);
+
     //1.根据用户输入——转换成echart需要的『配置对象configObj』的结构
     //从『数据源』中解析出解释数据
     let legendData = [];
@@ -70,6 +72,7 @@ export function generateChartConfig(title, dataSource, legendDataKeyOfDataSource
         series: seriesData
     };
     //3.返回『配置对象configObj』
+    console.log(configObj);
     return configObj;
 }
 

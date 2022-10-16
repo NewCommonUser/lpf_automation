@@ -1,6 +1,6 @@
 import ajax from './ajax';
 
-const BASE = '/api';
+const BASE = '';
 
 /**
  * 获取每种类型的时间
@@ -30,8 +30,6 @@ export const findTimeGroupByProject=()=>{
 
 
 
-
-
 export const findTaskTimeEveryDay=()=>{
     return ajax(BASE + "/OmnifocusHandle/findTaskTimeEveryDay", {}, 'GET');
 }
@@ -39,6 +37,15 @@ export const findTaskTimeEveryDay=()=>{
 
 export const findTaskTimeEveryMonth=()=>{
     return ajax(BASE + "/OmnifocusHandle/findTaskTimeEveryMonth", {}, 'GET');
+}
+
+
+/**
+ * 获取各个题型的分数走势
+ * @returns {*}
+ */
+export const getScoreAnalysis_by_kline=()=>{
+    return ajax(BASE + "/tExamSummary/getScoreAnalysis_by_kline", {}, 'GET');
 }
 
 

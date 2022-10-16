@@ -7,7 +7,7 @@ import ajax from './ajax';
 //     return ajax("login",{username,password},'POST');
 // }
 
-const BASE = '/api';
+const BASE = '';
 export const reqLogin = (username, password) => ajax(BASE + "/user/login", {username, password}, 'POST');
 
 

@@ -43,9 +43,9 @@ class Admin extends Component {
     render() {
         const user = memoryUtils.user;
         //如果内存中没有存储user，说明当前没有登录，就要跳转到登录界面
-        if(!user||!user.name){
-            return <Redirect to='/login'/>
-        }
+        // if(!user||!user.name){
+        //     return <Redirect to='/login'/>
+        // }
         return (
                 <Layout style={{height:'100%'}}>
                     <Sider><LeftNav/></Sider>
